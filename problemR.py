@@ -56,14 +56,14 @@ def main():
         words_list.remove("")
     else:
         print("The value is not present")
-    print(words_list)
+    #print(words_list)
 
     ##### Step 3: Finding the actual rhymes by comparing the word-rhymes that coincide
     #Cycling throgh the list and turning the rhyme-words around
     turned_list = []
     for word in words_list:
         turned_list.append(word[::-1])
-    print(turned_list)
+    #print(turned_list)
 
     #Cycling through the word_rhymes
     #To check for the word-rhymes in the right order, substitute turned_list with words_list
@@ -113,7 +113,9 @@ def main():
             if len(turned_list[x - 3]) <= len(turned_list[x + 1]) and len(turned_list[x - 3]) <= len(turned_list[x-1]):
                 shorter_word = turned_list[x - 3]
             for letter in range (0, len(shorter_word), 1):
-                if shorter_word[letter] == longest_word[letter]:
+                if letter == 0 and shorter_word[letter] == longest_word[letter]:
+                    turned_rhyme += shorter_word[letter]
+                if letter > 0 and shorter_word[letter] == longest_word[letter] and shorter_word[letter-1] == longest_word[letter-1]:
                     turned_rhyme += shorter_word[letter]
             turned_rhymes.append(turned_rhyme)
             
@@ -123,22 +125,22 @@ def main():
         rhymes_list.append(word[::-1])
     print(rhymes_list)
 
-    ##### Step 4: Check against the list of rhymes given to me that the rhymes in the canto actually exist
-    with open ("soloRime.txt", 'r') as rime: 
-        solo_rime = rime.read()
-    final_rime_file = re.sub(r'\/', r'\n', solo_rime)
-    rime_list = final_rime_file.split('\n')
+#     ##### Step 4: Check against the list of rhymes given to me that the rhymes in the canto actually exist
+#     with open ("soloRime.txt", 'r') as rime: 
+#         solo_rime = rime.read()
+#     final_rime_file = re.sub(r'\/', r'\n', solo_rime)
+#     rime_list = final_rime_file.split('\n')
 
-    found_rhymes = []
-    for rimaCanto in range (0, len(rhymes_list), 1): 
-        for rima in range (0, len(rime_list), 1):
-            if rhymes_list[rimaCanto] == rime_list[rima]:
-                found_rhymes.append(rhymes_list[rimaCanto])
-    print(len(found_rhymes))
+#     found_rhymes = []
+#     for rimaCanto in range (0, len(rhymes_list), 1): 
+#         for rima in range (0, len(rime_list), 1):
+#             if rhymes_list[rimaCanto] == rime_list[rima]:
+#                 found_rhymes.append(rhymes_list[rimaCanto])
+#     print(len(found_rhymes))
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
 
 ## Problemi da risolvere: 
 ## 1. Il codice in questo momento identifica tutte le lettere uguali, non solo le rime a partire dalla fine e si ferma una volta che ne trova una sbagliata --> vedre se while potrebbe funzionare meglio? 
