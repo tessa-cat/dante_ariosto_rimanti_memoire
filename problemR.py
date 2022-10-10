@@ -1,7 +1,5 @@
 import re
 
-FILEPATH = "/Users/tessacattaneo/Desktop/Mémoire/soloRime.txt"
-
 def main():
     ##### Step 1: Files clean up
     my_file = open("soloRime.txt", "r")
@@ -69,6 +67,7 @@ def main():
     #To check for the word-rhymes in the right order, substitute turned_list with words_list
     turned_rhymes = []
     for x in range (1, len(turned_list), 3):
+        #### First set of rhymes A (B) A
         if x == 1:
             turned_rhyme = ""
             #print(turned_list[x-1], turned_list[x+1])
@@ -79,10 +78,13 @@ def main():
                 longest_word = turned_list[x+1]
                 shorter_word = turned_list[x-1]
             for letter in range (0, len(shorter_word), 1):
-                if shorter_word[letter] == longest_word[letter]:
+                if letter == 0 and shorter_word[letter] == longest_word[letter]:
+                    turned_rhyme += shorter_word[letter]
+                if letter > 0 and shorter_word[letter] == longest_word[letter] and shorter_word[letter-1] == longest_word[letter-1]:
                     turned_rhyme += shorter_word[letter]
             turned_rhymes.append(turned_rhyme)
             #print(turned_rhyme)
+        ##### Last set of rhymes X (Y) X
         if x == (len(turned_list)-3): 
             turned_rhyme = ""
             #print(turned_list[x], turned_list[x+2])
@@ -93,25 +95,51 @@ def main():
                 longest_word = turned_list[x+2]
                 shorter_word = turned_list[x]  
             for letter in range (0, len(shorter_word), 1):
-                if shorter_word[letter] == longest_word[letter]:
+                if letter == 0 and shorter_word[letter] == longest_word[letter]:
+                    turned_rhyme += shorter_word[letter]
+                if letter > 0 and shorter_word[letter] == longest_word[letter] and shorter_word[letter-1] == longest_word[letter-1]:
                     turned_rhyme += shorter_word[letter]
             turned_rhymes.append(turned_rhyme)
             #print(turned_rhyme)  
+        ##### All the rhymes in sets of three
         elif x != 1 and x != (len(turned_list)-3):
             #print(turned_list[x - 3], turned_list[x-1], turned_list[x + 1])
             turned_rhyme = ""
-            if len(turned_list[x - 3]) >= len(turned_list[x-1]) and len(turned_list[x - 3]) >= len(turned_list[x + 1]):
-                longest_word = turned_list[x - 3]
-            if len(turned_list[x-1]) >= len(turned_list[x - 3]) and len(turned_list[x-1]) >= len(turned_list[x + 1]):
-               longest_word = turned_list[x-1]
-            if len(turned_list[x + 1]) >= len(turned_list[x-1]) and len(turned_list[x + 1]) >= len(turned_list[x - 3]):
-                longest_word = turned_list[x + 1]
-            if len(turned_list[x-1]) <= len(turned_list[x + 1]) and len(turned_list[x-1]) <= len(turned_list[x - 3]):
-                shorter_word = turned_list[x-1]
-            if len(turned_list[x + 1]) <= len(turned_list[x-1]) and len(turned_list[x + 1]) <= len(turned_list[x - 3]):
-                shorter_word = turned_list[x + 1]
-            if len(turned_list[x - 3]) <= len(turned_list[x + 1]) and len(turned_list[x - 3]) <= len(turned_list[x-1]):
-                shorter_word = turned_list[x - 3]
+            a = len(turned_list[x - 3])
+            a_word = turned_list[x - 3]
+            b = len(turned_list[x-1])
+            b_word = turned_list[x-1]
+            c = len(turned_list[x + 1])
+            c_word = turned_list[x + 1]
+            if a >= b and a >= c and b >= c: 
+                longest_word = a_word
+                shorter_word = c_word
+                middle_word = b_word
+            if a >= b and a >= c and c >= b: 
+                longest_word = a_word
+                shorter_word = b_word
+                middle_word = c_word
+            if b >= a and b >= c and a >= c:
+                longest_word = b_word
+                shorter_word = c_word
+                middle_word = a_word
+            if b >= a and b >= c and c >= a:
+                longest_word = b_word
+                shorter_word = a_word
+                middle_word = c_word
+            if c >= a and 
+            # if len(turned_list[x - 3]) >= len(turned_list[x-1]) and len(turned_list[x - 3]) >= len(turned_list[x + 1]):
+            #     longest_word = turned_list[x - 3]
+            # if len(turned_list[x-1]) >= len(turned_list[x - 3]) and len(turned_list[x-1]) >= len(turned_list[x + 1]):
+            #    longest_word = turned_list[x-1]
+            # if len(turned_list[x + 1]) >= len(turned_list[x-1]) and len(turned_list[x + 1]) >= len(turned_list[x - 3]):
+            #     longest_word = turned_list[x + 1]
+            # if len(turned_list[x-1]) <= len(turned_list[x + 1]) and len(turned_list[x-1]) <= len(turned_list[x - 3]):
+            #     shorter_word = turned_list[x-1]
+            # if len(turned_list[x + 1]) <= len(turned_list[x-1]) and len(turned_list[x + 1]) <= len(turned_list[x - 3]):
+            #     shorter_word = turned_list[x + 1]
+            # if len(turned_list[x - 3]) <= len(turned_list[x + 1]) and len(turned_list[x - 3]) <= len(turned_list[x-1]):
+            #     shorter_word = turned_list[x - 3]
             for letter in range (0, len(shorter_word), 1):
                 if letter == 0 and shorter_word[letter] == longest_word[letter]:
                     turned_rhyme += shorter_word[letter]
@@ -139,8 +167,8 @@ def main():
 #     print(len(found_rhymes))
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 
 ## Problemi da risolvere: 
 ## 1. Il codice in questo momento identifica tutte le lettere uguali, non solo le rime a partire dalla fine e si ferma una volta che ne trova una sbagliata --> vedre se while potrebbe funzionare meglio? 
