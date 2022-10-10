@@ -127,23 +127,20 @@ def main():
                 longest_word = b_word
                 shorter_word = a_word
                 middle_word = c_word
-            if c >= a and 
-            # if len(turned_list[x - 3]) >= len(turned_list[x-1]) and len(turned_list[x - 3]) >= len(turned_list[x + 1]):
-            #     longest_word = turned_list[x - 3]
-            # if len(turned_list[x-1]) >= len(turned_list[x - 3]) and len(turned_list[x-1]) >= len(turned_list[x + 1]):
-            #    longest_word = turned_list[x-1]
-            # if len(turned_list[x + 1]) >= len(turned_list[x-1]) and len(turned_list[x + 1]) >= len(turned_list[x - 3]):
-            #     longest_word = turned_list[x + 1]
-            # if len(turned_list[x-1]) <= len(turned_list[x + 1]) and len(turned_list[x-1]) <= len(turned_list[x - 3]):
-            #     shorter_word = turned_list[x-1]
-            # if len(turned_list[x + 1]) <= len(turned_list[x-1]) and len(turned_list[x + 1]) <= len(turned_list[x - 3]):
-            #     shorter_word = turned_list[x + 1]
-            # if len(turned_list[x - 3]) <= len(turned_list[x + 1]) and len(turned_list[x - 3]) <= len(turned_list[x-1]):
-            #     shorter_word = turned_list[x - 3]
+            if c >= a and c >= b and a >= b:
+                longest_word = c_word
+                shorter_word = b_word
+                middle_word = a_word
+            if c >= a and c >= b and b >= a:
+                longest_word = c_word
+                shorter_word = a_word
+                middle_word = b_word
             for letter in range (0, len(shorter_word), 1):
-                if letter == 0 and shorter_word[letter] == longest_word[letter]:
+                ##### The first loop through the letters simply checks that the letters of all three word_rhymes coincide (this would also cover the cases, if there are any, of "tronche" rhymes, in which the last accented vowel is the last vowel, i.e. città)
+                if letter == 0 and shorter_word[letter] == longest_word[letter] and middle_word[letter] == shorter_word[letter] and middle_word[letter] == longest_word[letter]:
                     turned_rhyme += shorter_word[letter]
-                if letter > 0 and shorter_word[letter] == longest_word[letter] and shorter_word[letter-1] == longest_word[letter-1]:
+                ##### For the remaining loops thorugh the letters of the words the program checks that not only by pair of letters but that also the precieding one coincides, so as to avoid that other letters are picked up by mistake 
+                elif letter > 0 and shorter_word[letter] == longest_word[letter] == middle_word[letter] and shorter_word[letter-1] == longest_word[letter-1] == middle_word[letter-1]:
                     turned_rhyme += shorter_word[letter]
             turned_rhymes.append(turned_rhyme)
             
