@@ -37,7 +37,6 @@ def main():
         testing.write(noDoubleSpaces)
 
     ##### Step 2: Extracting the word-rhymes from the file and putting them in a list
-    #Only keeping the words-rhyme for purposes of clarity
     with open("canto3.txt", "r") as testing: 
         parole_rima = testing.read()
 
@@ -150,22 +149,36 @@ def main():
         rhymes_list.append(word[::-1])
     print(rhymes_list)
 
-#     ##### Step 4: Check against the list of rhymes given to me that the rhymes in the canto actually exist
-#     with open ("soloRime.txt", 'r') as rime: 
-#         solo_rime = rime.read()
-#     final_rime_file = re.sub(r'\/', r'\n', solo_rime)
-#     rime_list = final_rime_file.split('\n')
 
-#     found_rhymes = []
-#     for rimaCanto in range (0, len(rhymes_list), 1): 
-#         for rima in range (0, len(rime_list), 1):
-#             if rhymes_list[rimaCanto] == rime_list[rima]:
-#                 found_rhymes.append(rhymes_list[rimaCanto])
-#     print(len(found_rhymes))
+    ##### Step 4: Check against the list of rhymes given to me that the rhymes in the canto actually exist
+    with open ("soloRime.txt", 'r') as rime: 
+        solo_rime = rime.read()
+    final_rime_file = re.sub(r'\/', r'\n', solo_rime)
+    rime_list = final_rime_file.split('\n')
+
+    found_rhymes = []
+    for rimaCanto in range (0, len(rhymes_list), 1): 
+        for rima in range (0, len(rime_list), 1):
+            if rhymes_list[rimaCanto] == rime_list[rima]:
+                found_rhymes.append(rhymes_list[rimaCanto])
+        if rhymes_list[rimaCanto] not in found_rhymes:
+            print(rhymes_list[rimaCanto] + ' is not listed as a rhyme. Please check for errors')
+    print(len(found_rhymes)) 
+    print(found_rhymes) 
+    # print(len(found_rhymes))
+
+    ##### Step 5: Putting back the rhymes in the canto
+    with open ('canto_parole_rima.txt', 'r') as parole_rima: 
+        p_r = parole_rima.read()
+    
+    clean_p_r = re.sub(r'\n{2,}', r'\n', p_r)
+
+    with open ('parole_rima_pulito.txt', 'w') as clean: 
+        clean.write(clean_p_r)
 
 
 if __name__ == "__main__":
     main()
 
 ## Problemi da risolvere: 
-## 1. Il codice in questo momento identifica tutte le lettere uguali, non solo le rime a partire dalla fine e si ferma una volta che ne trova una sbagliata --> vedre se while potrebbe funzionare meglio? 
+## Check that the number of rhymes found corresponds to number of lines of the canto -1 / 3? 
