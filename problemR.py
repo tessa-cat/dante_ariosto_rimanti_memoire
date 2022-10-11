@@ -18,20 +18,11 @@ def main():
         canto = canto3.read()
 
     #Cleaning up the canto from not useful characters
-    #clean up with regex
-    canto = canto.replace(",", "")
-    canto = canto.replace(";", "")
-    canto = canto.replace("\"", "")
-    canto = canto.replace("?", "")
-    canto = canto.replace(".", "")
-    canto = canto.replace(":", "")
-    canto = canto.replace(".", "")
-    canto = canto.replace("!", "")
-    canto = canto.replace("'", " ")
+    noCararatteri = re.sub(r"[^\w\s]", r" ", canto)
 
-    cantoPulito = re.sub(r"(')(\s)(\n)", r"\3", canto)
-    cantoPulito1 = re.sub(r"(\s+)(\n)", r"\2", cantoPulito)
-    noDoubleSpaces = re.sub(r"\s{2,}", r" ", cantoPulito1)
+    cantoPulito = re.sub(r"(\s+)(\n)", r"\2", noCararatteri)
+    noSpacesBeforeWords = re.sub(r"(\n)(\s)", r"\1", cantoPulito)
+    noDoubleSpaces = re.sub(r"\s{2,}", r" ", noSpacesBeforeWords)
 
     with open("canto3.txt", "w") as testing:
         testing.write(noDoubleSpaces)
@@ -147,7 +138,7 @@ def main():
     rhymes_list = []
     for word in turned_rhymes:
         rhymes_list.append(word[::-1])
-    print(rhymes_list)
+    #print(rhymes_list)
 
 
     ##### Step 4: Check against the list of rhymes given to me that the rhymes in the canto actually exist
@@ -163,18 +154,25 @@ def main():
                 found_rhymes.append(rhymes_list[rimaCanto])
         if rhymes_list[rimaCanto] not in found_rhymes:
             print(rhymes_list[rimaCanto] + ' is not listed as a rhyme. Please check for errors')
-    print(len(found_rhymes)) 
-    print(found_rhymes) 
+    #print(len(found_rhymes)) 
+    #print(found_rhymes) 
     # print(len(found_rhymes))
 
     ##### Step 5: Putting back the rhymes in the canto
-    with open ('canto_parole_rima.txt', 'r') as parole_rima: 
-        p_r = parole_rima.read()
-    
-    clean_p_r = re.sub(r'\n{2,}', r'\n', p_r)
+    #word_list is the list containing each word_rhyme, turned_list reversed
+    #print(turned_list)
 
-    with open ('parole_rima_pulito.txt', 'w') as clean: 
-        clean.write(clean_p_r)
+    for line in range (1, len(turned_rhymes), 1):
+        if line == 1: 
+            for letter in range (0, len(turned_rhymes[line]), 1):
+                length = len(turned_rhymes[line])
+                if turned_rhymes[letter] == turned_list[line-1][letter]:
+                    turned_list[line-1].insert(length, "*")
+    print(turned_list)
+
+
+    
+
 
 
 if __name__ == "__main__":
