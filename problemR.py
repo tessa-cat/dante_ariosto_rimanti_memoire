@@ -2,15 +2,14 @@ import re
 
 def main():
     ##### Step 1: Files clean up
-    my_file = open("soloRime.txt", "r")
-    content = my_file.read()
+    with open ("soloRime.txt", "r") as j:
+        my_file = j.read()
 
     #Alcune rime presentano doppia occorrenza, sono state divise per comodità nonostante vengano considerate come la stessa rima
-    final_file = re.sub(r'\/', r'\n', content)
+    final_file = re.sub(r'\/', r'\n', my_file)
     #print(final_file)
 
     first_list = final_file.split("\n")
-    my_file.close
     #print(first_list)
 
     #Opening the canto III
