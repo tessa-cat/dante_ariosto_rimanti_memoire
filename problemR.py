@@ -2,7 +2,7 @@ import re
 
 def main():
     ##### Step 1: Files clean up
-    with open ("soloRime.txt", "r") as j:
+    with open ("/Users/tessacattaneo/Desktop/Dante_Rime/Rimari/soloRime.txt", "r") as j:
         my_file = j.read()
 
     #Alcune rime presentano doppia occorrenza, sono state divise per comodità nonostante vengano considerate come la stessa rima
@@ -141,7 +141,7 @@ def main():
 
 
     ##### Step 4: Check against the list of rhymes given to me that the rhymes in the canto actually exist
-    with open ("soloRime.txt", 'r') as rime: 
+    with open ("/Users/tessacattaneo/Desktop/Dante_Rime/Rimari/soloRime.txt", 'r') as rime: 
         solo_rime = rime.read()
     final_rime_file = re.sub(r'\/', r'\n', solo_rime)
     rime_list = final_rime_file.split('\n')

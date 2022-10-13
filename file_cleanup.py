@@ -2,7 +2,7 @@ import re
 
 def main():
 
-    with open ("/Users/tessacattaneo/Desktop/Dante_Rime/File_puliti/01_Inferno.txt", "r") as If:
+    with open ("/Users/tessacattaneo/Desktop/Dante_Rime/File_puliti/txt/01_Inferno.txt", "r") as If:
         Inferno = If.read()
     
     lowerCase = Inferno.lower()
