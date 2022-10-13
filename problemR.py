@@ -157,17 +157,10 @@ def main():
     #print(found_rhymes) 
     # print(len(found_rhymes))
 
-    ##### Step 5: Putting back the rhymes in the canto
+    ##### Step 5: Output ???? What type? Putting the rhyme back in the verse? Creating a new rimario to compare? 
     #word_list is the list containing each word_rhyme, turned_list reversed
     #print(turned_list)
 
-    for line in range (1, len(turned_rhymes), 1):
-        if line == 1: 
-            for letter in range (0, len(turned_rhymes[line]), 1):
-                length = len(turned_rhymes[line])
-                if turned_rhymes[letter] == turned_list[line-1][letter]:
-                    turned_list[line-1].insert(length, "*")
-    print(turned_list)
 
 
     
