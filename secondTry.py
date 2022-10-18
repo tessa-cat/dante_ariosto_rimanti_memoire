@@ -60,12 +60,6 @@ def main():
 
     for word in range (0, len(turned_list), 1):
         tabella1 = []
-        # z_word = turned_list[word-3]
-        # y_word = turned_list[word-2]
-        # x_word = turned_list[word-1]
-        # a_word = turned_list[word+1]
-        # b_word = turned_list[word+2]
-        # c_word = turned_list[word+3]
         for number in range (-3, 3, 1):
             turned_rime = ""
             comparison_word = turned_list[word+number]
