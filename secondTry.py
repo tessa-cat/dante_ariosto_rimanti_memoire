@@ -52,16 +52,42 @@ def main():
         turned_list.append(word[::-1])
     #print(turned_list)
 
-    #Creating a two dimensional table
+    #Creating a table
     tabella = []
     for i in range (0, len(words_list), 1):
-        for a in range(0, len(words_list), 1):
-            tabella.insert(i, [a])
-    print(len(tabella))
+            tabella.append(i)
+    print(tabella)
 
+    for word in range (0, len(turned_list), 1):
+        tabella1 = []
+        # z_word = turned_list[word-3]
+        # y_word = turned_list[word-2]
+        # x_word = turned_list[word-1]
+        # a_word = turned_list[word+1]
+        # b_word = turned_list[word+2]
+        # c_word = turned_list[word+3]
+        for number in range (-3, 3, 1):
+            turned_rime = ""
+            comparison_word = turned_list[word+number]
+            len_comparison_word = len(comparison_word)
+            analized_word = turned_list[word]
+            len_analized_word = len(analized_word)
+            if len_analized_word >= len_comparison_word: 
+                longer_word = analized_word
+                shorter_word = comparison_word
+            elif len_comparison_word >= len_analized_word:
+                longer_word = comparison_word
+                shorter_word = analized_word
+            for letter in range (0, len(shorter_word), 1):
+                if letter == 0 and shorter_word[letter] == longer_word[letter]:
+                    turned_rime += shorter_word[letter]
+                elif letter > 0 and shorter_word[letter] == longer_word[letter] and shorter_word[letter-1] == longer_word[letter-1]:
+                    turned_rime += shorter_word[letter]
+            tabella1.append(len(turned_rime))
+        tabella.insert(word, tabella1)
 
+    print(tabella)
 
-    
 
 
 
