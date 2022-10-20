@@ -54,33 +54,59 @@ def main():
 
     #Creating a table
     tabella = []
-    for i in range (0, len(words_list), 1):
-            tabella.append(i)
-    print(tabella)
+    # for i in range (0, len(words_list), 1):
+    #         tabella.append(i)
+    # print(tabella)
 
     for word in range (0, len(turned_list), 1):
         tabella1 = []
-        for number in range (-3, 3, 1):
-            turned_rime = ""
-            comparison_word = turned_list[word+number]
-            len_comparison_word = len(comparison_word)
-            analized_word = turned_list[word]
-            len_analized_word = len(analized_word)
-            if len_analized_word >= len_comparison_word: 
-                longer_word = analized_word
-                shorter_word = comparison_word
-            elif len_comparison_word >= len_analized_word:
-                longer_word = comparison_word
-                shorter_word = analized_word
-            for letter in range (0, len(shorter_word), 1):
-                if letter == 0 and shorter_word[letter] == longer_word[letter]:
-                    turned_rime += shorter_word[letter]
-                elif letter > 0 and shorter_word[letter] == longer_word[letter] and shorter_word[letter-1] == longer_word[letter-1]:
-                    turned_rime += shorter_word[letter]
-            tabella1.append(len(turned_rime))
+        for number in range (-3, 4, 1):
+            if number != 0:
+                try:
+                    turned_rime = ""
+                    comparison_word = turned_list[word+number]
+                    len_comparison_word = len(comparison_word)
+                    analized_word = turned_list[word]
+                    len_analized_word = len(analized_word)
+                    if len_analized_word >= len_comparison_word: 
+                        longer_word = analized_word
+                        shorter_word = comparison_word
+                    elif len_comparison_word >= len_analized_word:
+                        longer_word = comparison_word
+                        shorter_word = analized_word
+                    for letter in range (0, len(shorter_word), 1):
+                        if letter == 0 and shorter_word[letter] == longer_word[letter]:
+                            turned_rime += shorter_word[letter]
+                        elif letter > 0 and shorter_word[letter] == longer_word[letter] and shorter_word[letter-1] == longer_word[letter-1]:
+                            turned_rime += shorter_word[letter]
+                    tabella1.append(len(turned_rime))  
+                except IndexError:
+                    pass
         tabella.insert(word, tabella1)
 
-    print(tabella)
+    #print(tabella)
+    #print(len(tabella))
+
+    #Interacting with the table
+    index_table = []
+    for line in range (0, len(tabella), 1): 
+        indexes = []
+        if line < (len(tabella)-3):
+            position = tabella[line]
+            max_value = position.max(tabella[line])
+            for entry in range (0, len(position), 1):
+                if max_value == position[entry]:
+                    indexes.append(position.index(position[entry]))
+        index_table.insert(line, indexes)
+
+    # table = []
+    # for line in range (0, len(tabella), 1):
+    #     if line < (len(tabella)-3):
+    #         position = tabella[line]
+    #         a = position.index(max(position))
+    #         table.append(a)
+    print(index_table)
+
 
 
 
@@ -89,4 +115,3 @@ if __name__ == "__main__":
     main()
 
 ## Problemi da risolvere: 
-## Check that the number of rhymes found corresponds to number of lines of the canto -1 / 3? 
