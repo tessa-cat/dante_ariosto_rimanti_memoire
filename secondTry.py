@@ -93,10 +93,12 @@ def main():
         indexes = []
         if line < (len(tabella)-3):
             position = tabella[line]
-            max_value = position.max(tabella[line])
+            max_value = max(position)
             for entry in range (0, len(position), 1):
-                if max_value == position[entry]:
-                    indexes.append(position.index(position[entry]))
+                x = position[entry]
+                if max_value == x:
+                    print(position.index(x))
+                    indexes.append(position.index(x))
         index_table.insert(line, indexes)
 
     # table = []
