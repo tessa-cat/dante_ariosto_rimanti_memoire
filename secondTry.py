@@ -84,30 +84,58 @@ def main():
                     pass
         tabella.insert(word, tabella1)
 
-    #print(tabella)
+    print(tabella)
     #print(len(tabella))
 
     #Interacting with the table
+
+    """
     index_table = []
-    for line in range (0, len(tabella), 1): 
+    #for line in range (0, len(tabella), 1): 
+    for line in range (0, 5): 
         indexes = []
+
         if line < (len(tabella)-3):
             position = tabella[line]
             max_value = max(position)
             for entry in range (0, len(position), 1):
-                x = position[entry]
-                if max_value == x:
-                    print(position.index(x))
-                    indexes.append(position.index(x))
+                if max_value == position[entry]:
+                    print(position.index(position[entry]))
+                    indexes.append(position.index(position[entry]))
         index_table.insert(line, indexes)
+    """
 
+    # idk
+    all_indexes_max = []
+
+    # Loops through each subtable in "tabella"
+    for i in range (0, 5):
+        indexes_max = []
+
+        # Subtable
+        subtable = tabella[i]
+
+        # Find max in subtable
+        max_in_subtable = max(subtable)
+        
+        # Find each value that "is" the max
+        for j in range(len(subtable)):
+            # If the value of the index of the subtable
+            # is equal to the found max
+            if subtable[j] == max_in_subtable:
+                # Let's add it to "index_max"
+                indexes_max.append(j)
+
+        # Append to when all indexes were found
+        all_indexes_max.append(indexes_max)
+        
     # table = []
     # for line in range (0, len(tabella), 1):
     #     if line < (len(tabella)-3):
     #         position = tabella[line]
     #         a = position.index(max(position))
     #         table.append(a)
-    print(index_table)
+    #print(index_table)
 
 
 
