@@ -5,12 +5,10 @@ def main():
     with open ("/Users/tessacattaneo/Desktop/Dante_Rime/Rimari/soloRime.txt", "r") as j:
         my_file = j.read()
 
-    #Alcune rime presentano doppia occorrenza, sono state divise per comodità nonostante vengano considerate come la stessa rima
+    #Splitting the sicilian rhymes
     final_file = re.sub(r'\/', r'\n', my_file)
-    #print(final_file)
 
     first_list = final_file.split("\n")
-    #print(first_list)
 
     #Opening the canto III
     with open ("canto_3.txt", 'r') as canto3: 
@@ -54,9 +52,6 @@ def main():
 
     #Creating a table
     tabella = []
-    # for i in range (0, len(words_list), 1):
-    #         tabella.append(i)
-    # print(tabella)
 
     for word in range (0, len(turned_list), 1):
         tabella1 = []
@@ -88,28 +83,10 @@ def main():
     #print(len(tabella))
 
     #Interacting with the table
-
-    """
-    index_table = []
-    #for line in range (0, len(tabella), 1): 
-    for line in range (0, 5): 
-        indexes = []
-
-        if line < (len(tabella)-3):
-            position = tabella[line]
-            max_value = max(position)
-            for entry in range (0, len(position), 1):
-                if max_value == position[entry]:
-                    print(position.index(position[entry]))
-                    indexes.append(position.index(position[entry]))
-        index_table.insert(line, indexes)
-    """
-
-    # idk
     all_indexes_max = []
 
     # Loops through each subtable in "tabella"
-    for i in range (0, 5):
+    for i in range (0, len(tabella)):
         indexes_max = []
 
         # Subtable
@@ -128,15 +105,41 @@ def main():
 
         # Append to when all indexes were found
         all_indexes_max.append(indexes_max)
-        
-    # table = []
-    # for line in range (0, len(tabella), 1):
-    #     if line < (len(tabella)-3):
-    #         position = tabella[line]
-    #         a = position.index(max(position))
-    #         table.append(a)
-    #print(index_table)
+    
+    print(all_indexes_max)
 
+    # If x is the verse we are taking into consideration, the position inidexes correspond to verses as follows: 0 == x-3, 1 == x-2, 2 == x-1, 3 == x+1, 4 == x+2, 5 == x+3
+    #Since the index of the all_indexes_max table correspond to x verse analised we should be able to reconstruct the scheme of the poem
+    #Creating a new table to correlate the verses
+    verses = []
+    for a in range (len(all_indexes_max)):
+        subtable = all_indexes_max[a]
+        corresponding_verses = []
+        for i in range (len(subtable)):
+            if subtable[i] == 0:
+                corresponding_verses.append(a)
+                corresponding_verses.append(a-3)
+            elif subtable[i] == 1:
+                corresponding_verses.append(a)
+                corresponding_verses.append(a-2)
+            elif subtable[i] == 2:
+                corresponding_verses.append(a)
+                corresponding_verses.append(a-1)
+            elif subtable[i] == 3:
+                corresponding_verses.append(a)
+                corresponding_verses.append(a+1)
+            elif subtable[i] == 4:
+                corresponding_verses.append(a)
+                corresponding_verses.append(a+2)
+            elif subtable[i] == 5:
+                corresponding_verses.append(a)
+                corresponding_verses.append(a+3)
+        #Deleting the duplicates in the list
+        corresponding_verses = list(dict.fromkeys(corresponding_verses))
+        #print(corresponding_verses)
+        verses.append(corresponding_verses)
+    print(verses)
+    
 
 
 
