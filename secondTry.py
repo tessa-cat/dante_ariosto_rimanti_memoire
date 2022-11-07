@@ -140,6 +140,30 @@ def main():
         verses.append(corresponding_verses)
     print(verses)
     
+    #Looping through the table, if the numbers duplicates themselves in the tables, they are merged
+    #First finding the max length of the sub_lists in the list verses
+
+    corresponding_verses = []
+    for a in range (len(verses)):
+        subtable = verses[a]
+        for n in range (1, 7):
+            try: 
+                n_comp_subtable = a + n
+                comp_subtable = verses[n_comp_subtable]
+                if subtable > comp_subtable:
+                    long_sub = subtable
+                elif comp_subtable > subtable:
+                    long_sub = comp_subtable
+                for i in range (len(long_sub)):
+                    try:
+                        if subtable[i] == comp_subtable:
+                            subtable.extend(comp_subtable)
+                    except IndexError:
+                        pass
+            except IndexError:
+                pass
+    print(verses)
+
 
 
 
