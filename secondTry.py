@@ -106,7 +106,7 @@ def main():
         # Append to when all indexes were found
         all_indexes_max.append(indexes_max)
     
-    print(all_indexes_max)
+    #print(all_indexes_max)
 
     # If x is the verse we are taking into consideration, the position inidexes correspond to verses as follows: 0 == x-3, 1 == x-2, 2 == x-1, 3 == x+1, 4 == x+2, 5 == x+3
     #Since the index of the all_indexes_max table correspond to x verse analised we should be able to reconstruct the scheme of the poem
@@ -138,7 +138,7 @@ def main():
         corresponding_verses = list(dict.fromkeys(corresponding_verses))
         #print(corresponding_verses)
         verses.append(corresponding_verses)
-    print(verses)
+    #print(verses)
     
     #Looping through the table, if the numbers duplicates themselves in the tables, they are merged
     #First finding the max length of the sub_lists in the list verses
@@ -162,7 +162,8 @@ def main():
                         pass
             except IndexError:
                 pass
-    print(verses)
+        corresponding_verses.append(subtable)
+    print(corresponding_verses)
 
 
 
