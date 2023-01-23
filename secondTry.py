@@ -79,7 +79,7 @@ def main():
                     pass
         tabella.insert(word, tabella1)
 
-    print(tabella)
+    #print(tabella)
     #print(len(tabella))
 
     #Interacting with the table
@@ -138,32 +138,64 @@ def main():
         corresponding_verses = list(dict.fromkeys(corresponding_verses))
         #print(corresponding_verses)
         verses.append(corresponding_verses)
-    #print(verses)
+    print(verses)
     
     #Looping through the table, if the numbers duplicates themselves in the tables, they are merged
-    #First finding the max length of the sub_lists in the list verses
-
+    #Creating a new table of corresponding verses
     corresponding_verses = []
-    for a in range (len(verses)):
-        subtable = verses[a]
-        for n in range (1, 7):
-            try: 
-                n_comp_subtable = a + n
-                comp_subtable = verses[n_comp_subtable]
-                if subtable > comp_subtable:
-                    long_sub = subtable
-                elif comp_subtable > subtable:
-                    long_sub = comp_subtable
-                for i in range (len(long_sub)):
-                    try:
-                        if subtable[i] == comp_subtable:
-                            subtable.extend(comp_subtable)
-                    except IndexError:
-                        pass
-            except IndexError:
-                pass
-        corresponding_verses.append(subtable)
-    print(corresponding_verses)
+    #Looping through all the subtables in the list verses
+    for i in range(len(verses)):
+        #Isolamento della sottotabella in questione
+        subtable = verses[i]
+        #Looping through the subtables that "go together"
+        for n in range (-3, 4):
+            new_subtable = []
+            if n != 0:
+                try:
+                    n_subtable = a+n
+                    #Find the next subtable to compare the first one with
+                    comp_subtable = verses[n_subtable]
+                    #Determining which subtable in question is longest
+                    if subtable > comp_subtable:
+                        long = subtable
+                        short = comp_subtable
+                    elif comp_subtable > subtable:
+                        long = comp_subtable
+                        short = subtable
+                    #Looping through the two table to see if any numbers are the same
+                    for a in range(len(short)):
+                        for x in range(len(long)):
+                            if short[a] == long[x]:
+                                new_subtable = short + long
+                    #new_subtable = list(dict.fromkeys(new_subtable))
+                                corresponding_verses.append(new_subtable)
+                except IndexError:
+                    pass
+        
+        #print(corresponding_verses)
+
+        
+    # corresponding_verses = []
+    # for a in range (len(verses)):
+    #     subtable = verses[a]
+    #     for n in range (1, 7):
+    #         try: 
+    #             n_comp_subtable = a + n
+    #             comp_subtable = verses[n_comp_subtable]
+    #             if subtable > comp_subtable:
+    #                 long_sub = subtable
+    #             elif comp_subtable > subtable:
+    #                 long_sub = comp_subtable
+    #             for i in range (len(long_sub)):
+    #                 try:
+    #                     if subtable[i] == comp_subtable:
+    #                         subtable.extend(comp_subtable)
+    #                 except IndexError:
+    #                     pass
+    #         except IndexError:
+    #             pass
+    #     corresponding_verses.append(subtable)
+    # print(corresponding_verses)
 
 
 
