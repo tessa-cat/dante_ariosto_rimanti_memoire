@@ -12,7 +12,10 @@ def main():
     # # Creating a file for each individual canto
     # for item in canti:
     #     index = str((canti.index(item)))
-    #     filepath = '/Users/tessacattaneo/Desktop/tesi_master/Inferno/If_'+index+'.txt'
+    #     if index == '1' or index == '2' or index == '3' or index == '4' or index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
+    #         filepath = '/Users/tessacattaneo/Desktop/tesi_master/Inferno/0'+index+'_If.txt'
+    #     else:
+    #         filepath = '/Users/tessacattaneo/Desktop/tesi_master/Inferno/'+index+'_If.txt'
     #     if len(item) != 0:
     #         with open (filepath, 'w') as a:
     #             a.write(item)
@@ -28,7 +31,10 @@ def main():
     # # Creating a file for each individual canto
     # for item in canti:
     #     index = str((canti.index(item)))
-    #     filepath = '/Users/tessacattaneo/Desktop/tesi_master/Purgatorio/Pg_'+index+'.txt'
+    #     if index == '1' or index == '2' or index == '3' or index == '4' or index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
+    #         filepath = '/Users/tessacattaneo/Desktop/tesi_master/Purgatorio/0'+index+'_Pg.txt'
+    #     else:
+    #         filepath = '/Users/tessacattaneo/Desktop/tesi_master/Purgatorio/'+index+'_Pg.txt'
     #     if len(item) != 0:
     #         with open (filepath, 'w') as a:
     #             a.write(item)
@@ -44,7 +50,10 @@ def main():
     # # Creating a file for each individual canto
     # for item in canti:
     #     index = str((canti.index(item)))
-    #     filepath = '/Users/tessacattaneo/Desktop/tesi_master/Paradiso/Pd_'+index+'.txt'
+    #     if index == '1' or index == '2' or index == '3' or index == '4' or index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
+    #         filepath = '/Users/tessacattaneo/Desktop/tesi_master/Paradiso/0'+index+'_Pd.txt'
+    #     else:
+    #         filepath = '/Users/tessacattaneo/Desktop/tesi_master/Paradiso/'+index+'_Pd.txt'
     #     if len(item) != 0:
     #         with open (filepath, 'w') as a:
     #             a.write(item)
@@ -57,9 +66,13 @@ def main():
     canti = re.split('[A-Z]{2,}\s[A-Z]{2,}\n', Orlando_furioso)
 
     # Creating a file for each individual canto
+    ## For some reason the before last canto is badly cut --> I cut out the last line manually
     for item in canti:
         index = str((canti.index(item)))
-        filepath = '/Users/tessacattaneo/Desktop/tesi_master/OF/Of_'+index+'.txt'
+        if index == '1' or index == '2' or index == '3' or index == '4' or index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
+            filepath = '/Users/tessacattaneo/Desktop/tesi_master/OF/0'+index+'_Of.txt'
+        else:
+            filepath = '/Users/tessacattaneo/Desktop/tesi_master/OF/'+index+'_Of.txt'
         if len(item) != 0:
             with open (filepath, 'w') as a:
                 a.write(item)

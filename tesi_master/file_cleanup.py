@@ -20,7 +20,6 @@ def main():
     # Because the canti in the Orlando are identified by being a string
     # of upper case letters, the first step of lower() is here avoided
     # to then better split the text
-    #lowerCase = Orlando.lower()
     noCararatteri = re.sub(r"[^\w\s]", r" ", Orlando)
     noNumeri = re.sub(r"([0-9]+)(\n)", r"\2", noCararatteri)
     cantoPulito = re.sub(r"(\s+)(\n)", r"\2", noNumeri)
