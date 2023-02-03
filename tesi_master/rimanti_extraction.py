@@ -1,5 +1,6 @@
 import re
 import os
+import json
 
 
 def main():
@@ -199,8 +200,20 @@ def main():
     with open ('rimanti_of.txt', 'w') as check:
         for element in Of_rimanti_list:
             single_element = str(element)
-            check.write(single_element+'\n')    
+            check.write(single_element+'\n')
 
+    with open ('inferno_rimanti.json', 'w') as inf:
+        json.dump(inferno_rimanti_list, inf)
+
+    with open ('purgatorio_rimanti.json', 'w') as purg:
+        json.dump(purgatorio_rimanti_list, purg)
+
+    with open ('paradiso_rimanti.json', 'w') as para:
+        json.dump(paradiso_rimanti_list, para)
+
+    with open ('orlando_rimanti.json', 'w') as orl:
+        json.dump(Of_rimanti_list, orl)
 
 if __name__ == "__main__":
     main()
+
