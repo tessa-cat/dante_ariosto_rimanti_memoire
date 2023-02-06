@@ -20,38 +20,55 @@ def main():
     OrlandoFurioso = open('orlando_rimanti.json')
     of_rimanti_list = json.load(OrlandoFurioso)
 
-    # Trying first with one canto for each
-    if_1_list = inferno_rimanti_list[0]
-    of_1_list = of_rimanti_list[45]
-
     value = 0
-    # First we cycle through the sublists of rimanti in the specific Dante canto
-    for sub_list in if_1_list:
-        # Determining the index of the sub_list in question because otherwise I will get lost
-        if_index = if_1_list.index(sub_list)
-        # First and last pair of rimanti of each canto
-        if if_index == 0 or if_index == (len(if_1_list) - 1):
-           # Cycling through the list of the rimanti in the Orlando Furioso to check against
-           for sub_list in of_1_list:
-               # Again index of each sublist to not get lost
-               of_index = of_1_list.index(sub_list)
-               # This statement is true if both the rimanti in the Dante's canto are found in one of the sub_list of rimanti of the Ariosto canto
-               if if_1_list[if_index][0] in of_1_list[of_index] and if_1_list[if_index][1] in of_1_list[of_index]:
-                   print(if_1_list[if_index][0], if_1_list[if_index][1], of_1_list[of_index])
-        # Sub_lists of three rimanti
-        elif if_index != 0 and if_index != (len(if_1_list) - 1):
-            for sub_list in of_1_list:
-                # The sub_lists are as follows: [A, B, C]
-                # 1 complete point assigned if all three are in the OF sub_list
-                # First case, A and B are in one of the OF sub_lists (1/3 points)
-                if if_1_list[if_index][0] in of_1_list[of_index] and if_1_list[if_index][1] in of_1_list[of_index]:
-                   print(if_1_list[if_index][0], if_1_list[if_index][1],of_1_list[of_index])
-                # Second case, A and C are in one of the OF sub_lists (1/3 points)
-                if if_1_list[if_index][0] in of_1_list[of_index] and if_1_list[if_index][2] in of_1_list[of_index]:
-                    print(if_1_list[if_index][0], if_1_list[if_index][2],of_1_list[of_index])
-                # Third case, B and C are in one of the OF sub_lists (1/3 points)
-                if if_1_list[if_index][1] in of_1_list[of_index] and if_1_list[if_index][2] in of_1_list[of_index]:
-                   print(if_1_list[if_index][1], if_1_list[if_index][2],of_1_list[of_index])
+    for canto_D in inferno_rimanti_list : 
+        # Index of each canto in the list
+        canto_D_index = inferno_rimanti_list.index(canto_D)
+        # Accessing the specific canto to cycle through
+        canto_D_to_analyse = inferno_rimanti_list[canto_D_index]
+
+        #Cycling through each canto of Orlando Furioso
+        for canto_A in of_rimanti_list:
+            canto_A_index = of_rimanti_list.index(canto_A)
+            canto_A_to_analyse = of_rimanti_list[canto_A_index]
+            # First we cycle through the sublists of rimanti in the specific Dante canto
+            for sub_list_D in canto_D_to_analyse:
+                # Determining the index of the sub_list in question because otherwise I will get lost
+                if_index = canto_D_to_analyse.index(sub_list_D)
+
+                # First and last pair of rimanti of each canto
+                if if_index == 0 or if_index == (len(canto_D_to_analyse) - 1):
+                # Cycling through the list of the rimanti in the Orlando Furioso to check against
+                    for sub_list_A in canto_A_to_analyse:
+                        # Again index of each sublist to not get lost
+                        of_index = canto_A_to_analyse.index(sub_list_A)
+                        # This statement is true if both the rimanti in the Dante's canto are found in one of the sub_list of rimanti of the Ariosto canto
+                        if canto_D_to_analyse[if_index][0] in canto_A_to_analyse[of_index] and canto_D_to_analyse[if_index][1] in canto_A_to_analyse[of_index]:
+                            #print(canto_D_to_analyse[if_index][0], canto_D_to_analyse[if_index][1], canto_A_to_analyse[of_index], canto_D_index, canto_A_index)
+                            value += 1/3
+
+                # Sub_lists of three rimanti
+                elif if_index != 0 and if_index != (len(canto_D_to_analyse) - 1):
+                    for sub_list_A in canto_A_to_analyse:
+                        # Again index of each sublist to not get lost
+                        of_index = canto_A_to_analyse.index(sub_list_A)
+                        # The sub_lists are as follows: [A, B, C]
+                        # 1 complete point assigned if all three are in the OF sub_list
+                        # First case, A and B are in one of the OF sub_lists (1/3 points)
+                        if canto_D_to_analyse[if_index][0] in canto_A_to_analyse[of_index] and canto_D_to_analyse[if_index][1] in canto_A_to_analyse[of_index]:
+                            #print(canto_D_to_analyse[if_index][0], canto_D_to_analyse[if_index][1],canto_A_to_analyse[of_index], canto_D_index, canto_A_index)
+                            value += 1/3
+                        # Second case, A and C are in one of the OF sub_lists (1/3 points)
+                        if canto_D_to_analyse[if_index][0] in canto_A_to_analyse[of_index] and canto_D_to_analyse[if_index][2] in canto_A_to_analyse[of_index]:
+                            #print(canto_D_to_analyse[if_index][0], canto_D_to_analyse[if_index][2],canto_A_to_analyse[of_index], canto_D_index, canto_A_index)
+                            value += 1/3
+                        # Third case, B and C are in one of the OF sub_lists (1/3 points)
+                        if canto_D_to_analyse[if_index][1] in canto_A_to_analyse[of_index] and canto_D_to_analyse[if_index][2] in canto_A_to_analyse[of_index]:
+                            #print(canto_D_to_analyse[if_index][1], canto_D_to_analyse[if_index][2],canto_A_to_analyse[of_index], canto_D_index, canto_A_index)
+                            value += 1/3
+    
+    tot = (value/33894)*100
+    print(tot)
 
 if __name__ == "__main__":
     main()
