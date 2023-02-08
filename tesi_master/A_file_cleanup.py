@@ -2,7 +2,7 @@ import re
 
 def main():
 
-    # with open ("/Users/tessacattaneo/Desktop/tesi_master/File_puliti/txt/03_Paradiso.txt", "r") as If:
+    # with open ("tesi_master/File_puliti/txt/03_Paradiso.txt", "r") as If:
     #     Inferno = If.read()
     
     # lowerCase = Inferno.lower()
@@ -14,7 +14,7 @@ def main():
     # with open("canticaParadiso.txt", "w") as testing:
     #     testing.write(noDoubleSpaces)
 
-    with open ("/Users/tessacattaneo/Desktop/tesi_master/File_puliti/txt/orlando_furioso.txt", "r") as OF:
+    with open ("tesi_master/File_puliti/txt/Orlando_furioso.txt", "r") as OF:
         Orlando = OF.read()
 
     # Because the canti in the Orlando are identified by being a string
