@@ -2,20 +2,20 @@ import re
 import json
 
 def main():
-    OrlandoFurioso = open('orlando_rimanti.json')
+    OrlandoFurioso = open('tesi_master/orlando_rimanti.json')
     of_rimanti_list = json.load(OrlandoFurioso)
 
     # Importing the json files and opening it as a python list
     # Inferno
-    inferno = open('inferno_rimanti.json')
+    inferno = open('tesi_master/inferno_rimanti.json')
     inferno_rimanti_list = json.load(inferno)
     
     # Purgtorio
-    purgatorio = open('purgatorio_rimanti.json')
+    purgatorio = open('tesi_master/purgatorio_rimanti.json')
     purgatorio_rimanti_list = json.load(purgatorio)
 
     # Paradiso
-    paradiso = open('paradiso_rimanti.json')
+    paradiso = open('tesi_master/paradiso_rimanti.json')
     paradiso_rimanti_list = json.load(paradiso)
 
 
