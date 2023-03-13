@@ -1,6 +1,7 @@
-import re
 import json
 import itertools
+import math
+import re
 
 def main():
 
@@ -17,26 +18,21 @@ def main():
     paradiso = open('/Users/tessacattaneo/Desktop/Dante_Rime/tesi_master/paradiso_rimanti.json')
     paradiso_rimanti_list = json.load(paradiso)
 
+    dante_canti = []
     dante_rimanti = []
-    if_rimanti = []
-    pg_rimanti = []
-    pd_rimanti = []
     for canto in inferno_rimanti_list:
-        for sub_list in canto:
+        dante_canti.append(canto)
+        for sub_list in canto: 
             dante_rimanti.append(sub_list)
-            if_rimanti.append(sub_list)
     for canto in purgatorio_rimanti_list:
-        for sub_list in canto:
+        dante_canti.append(canto)
+        for sub_list in canto: 
             dante_rimanti.append(sub_list)
-            pg_rimanti.append(sub_list)
     for canto in paradiso_rimanti_list:
-        for sub_list in canto:
+        dante_canti.append(canto)
+        for sub_list in canto: 
             dante_rimanti.append(sub_list)
-            pd_rimanti.append(sub_list)
 
-    
-
-    #print(dante_rimanti)
 
     # Orlando Furioso
     OrlandoFurioso = open('/Users/tessacattaneo/Desktop/Dante_Rime/tesi_master/orlando_rimanti.json')
@@ -50,70 +46,60 @@ def main():
     # print(number_of_three_rimanti_of)
     ## The number is 9684
 
-    # three_rimanti_sorted = []
-    # for a_canto in of_rimanti_list:
-    #     for of_sublist in a_canto: 
-    #         if len(of_sublist) == 3:
-    #             for d_sublist in dante_rimanti:
-    #                 if sorted(of_sublist) == sorted(d_sublist):
-    #                     value = str(of_sublist) + str(of_rimanti_list.index(a_canto)) + ' '+ str(a_canto.index(of_sublist))
-    #                     three_rimanti_sorted.append(value)
-    #                     #print(of_sublist, of_rimanti_list.index(a_canto), a_canto.index(of_sublist))
-    #                     break
-    # #print(three_rimanti_sorted)
-    # print(len(three_rimanti_sorted))
-    ## The length is 840
 
-    three_rimanti_if = []
+    three_rimanti_sorted = []
     for a_canto in of_rimanti_list:
         for of_sublist in a_canto: 
             if len(of_sublist) == 3:
-                for d_sublist in if_rimanti:
+                for d_sublist in dante_rimanti:
                     if sorted(of_sublist) == sorted(d_sublist):
-                        # value = str(of_sublist) + str(of_rimanti_list.index(a_canto)) + ' '+ str(a_canto.index(of_sublist))
-                        three_rimanti_if.append(of_sublist)
+                        three_rimanti_sorted.append(sorted(of_sublist))
                         break
     #print(three_rimanti_sorted)
-    #print(len(three_rimanti_if))
+    # The length is 840
 
-    three_rimanti_pg = []
-    for a_canto in of_rimanti_list:
-        for of_sublist in a_canto: 
-            if len(of_sublist) == 3:
-                for d_sublist in pg_rimanti:
-                    if sorted(of_sublist) == sorted(d_sublist):
-                        # value = str(of_sublist) + str(of_rimanti_list.index(a_canto)) + ' '+ str(a_canto.index(of_sublist))
-                        three_rimanti_pg.append(of_sublist)
-                        break
-    #print(three_rimanti_sorted)
-    #print(len(three_rimanti_pg))
-
-    three_rimanti_pd = []
-    for a_canto in of_rimanti_list:
-        for of_sublist in a_canto: 
-            if len(of_sublist) == 3:
-                for d_sublist in pd_rimanti:
-                    if sorted(of_sublist) == sorted(d_sublist):
-                        # value = str(of_sublist) + str(of_rimanti_list.index(a_canto)) + ' '+ str(a_canto.index(of_sublist))
-                        three_rimanti_pd.append(of_sublist)
-                        break
-    #print(three_rimanti_sorted)
-    #print(len(three_rimanti_pd))
+    # Making a dictionary
+    rimanti_dic = {}
+    for sub_list in three_rimanti_sorted:
+        key = '_'.join(sub_list)
+        rimanti_dic[key] = {'OF': [], 'IF':[], 'PG': [], 'PD':[]}
+    print(rimanti_dic)
 
 
-    #print(three_rimanti_if)
-    if_sorted = []
-    for sub_list in three_rimanti_if:
-        if_sorted.append(sorted(sub_list))
+    # #of_set = set(three_rimanti_sorted)
+    # #print(len(of_set))
 
-    if_set = set(tuple(i) for i in if_sorted)
-    print(len(if_set)) # 186 --> it could be interesting to see if the rimanti are all taken from the same place. For example, if we were to make a list of all the repetitions and see if they are repeated in Dante as well then we could easily compare the verses in question and truly try to understand if it is a citation, a coincidence, an "easy" rhyme, or citations of different places of Dante.
-    print(if_set)
+    #List of all groups of three that in Ariosto and Dante, with index of the group in Ariosto
+    for canto in of_rimanti_list:
+        for of_sublist in canto:
+            if sorted(of_sublist) in three_rimanti_sorted:
+                key = '_'.join(sorted(of_sublist))
+                pos_canto = of_rimanti_list.index(canto) + 1
+                pos_verso = math.ceil(canto.index(of_sublist)/3)
+                value = [pos_canto, pos_verso]
+                rimanti_dic[key]['OF'].append(value)
+    
 
-    # for sub_list_if in three_rimanti_if:
-    #     for sub_list_pg in three_rimanti_pg:
-    #         if sorted(sub_list_if) == sorted(sub_list_pg):
-    #             print(sub_list_if)
+    for canto in dante_canti:
+        for dante_sublist in canto:
+            if sorted(dante_sublist) in three_rimanti_sorted:
+                key = '_'.join(sorted(dante_sublist))
+                if dante_canti.index(canto) <= 33:
+                    value = [dante_canti.index(canto), (canto.index(dante_sublist))*3]
+                    rimanti_dic[key]['IF'].append(value)
+                if dante_canti.index(canto) > 33 and dante_canti.index(canto) <= 66:
+                    posotion_canto = (dante_canti.index(canto)) - 33
+                    value = [posotion_canto, (canto.index(dante_sublist))*3]
+                    rimanti_dic[key]['PG'].append(value)
+                if dante_canti.index(canto) > 66 and dante_canti.index(canto) < 100:
+                    posotion_canto = (dante_canti.index(canto)) - 66
+                    value = [posotion_canto, (canto.index(dante_sublist))*3]
+                    rimanti_dic[key]['PD'].append(value)
+
+    #print(rimanti_dic)
+
+    with open ('dictionary.json', 'w') as dic:
+        json.dump(rimanti_dic, dic)
 
 
 

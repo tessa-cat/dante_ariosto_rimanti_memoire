@@ -54,9 +54,9 @@ def main():
     #         check.write(single_element+'\n')
 
 
-    ### PURGATORIO ###
-    # Directory
-    folder = 'Purgatorio'
+    ## PURGATORIO ###
+    #Directory
+    folder = 'tesi_master/Purgatorio'
 
     #Comprehensive list of all the rimanti sublists by canto
     purgatorio_rimanti_list = []
@@ -97,11 +97,11 @@ def main():
                 rimanti_in_rima.append(rimanti)
         purgatorio_rimanti_list.append(rimanti_in_rima)
 
-    # Putting the rimanti in a txt document for check purposes
-    with open ('rimanti_purgatorio.txt', 'w') as check:
-        for element in purgatorio_rimanti_list:
-            single_element = str(element)
-            check.write(single_element+'\n')     
+    # # Putting the rimanti in a txt document for check purposes
+    # with open ('rimanti_purgatorio.txt', 'w') as check:
+    #     for element in purgatorio_rimanti_list:
+    #         single_element = str(element)
+    #         check.write(single_element+'\n')     
 
 
     # ### PARADISO ###
@@ -153,7 +153,7 @@ def main():
     #         single_element = str(element)
     #         check.write(single_element+'\n') 
 
-    # ### ORLANDO FURIOSO ###
+    # # ### ORLANDO FURIOSO ###
     # # Directory
     # folder = 'OF'
 
@@ -171,7 +171,7 @@ def main():
     #     lowercase = canto.lower()
 
     #     # Accounting for different writing --> the problem with this is that the autors not only write some words differently, but within the works themselves a word can be spelled differently. How do I account for the magin of error? 
-    #     characters = lowercase.replace('ï', 'i').replace('è', 'e').replace('ò', 'o').replace('í', 'i').replace('é', 'e').replace('ü', 'u').replace('à', 'a').replace('ô', 'o').replace('eterno', 'etterno').replace('camino', 'cammino').replace('castiga', 'gastiga')
+    #     characters = lowercase.replace('à', 'a').replace('â', 'a').replace('è', 'e').replace('é', 'e').replace('ê', 'e').replace('ï', 'i').replace('í', 'i').replace('ì', 'i').replace('î', 'i').replace('ò', 'o').replace('ó', 'o').replace('ô', 'o').replace('ü', 'u').replace('ù', 'u').replace('ú', 'u').replace('eterno', 'etterno').replace('camino', 'cammino').replace('castiga', 'gastiga')
 
     #     # Keeping only the rimante !this might not work for some rimanti!
     #     rimanti = re.sub(r"(.*)(\s)(\w+)(\n)", r"\3\4", characters)

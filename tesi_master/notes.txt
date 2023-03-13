@@ -12,3 +12,5 @@ Groups of two:
 - not a citation 
 
 Frequenza nei gruppi di due e tre, categoria per tokens aggiungo la frequenza se no types non aggiungo frequenza
+
+Possibili riprese no citazioni
