@@ -38,13 +38,13 @@ def main():
     OrlandoFurioso = open('/Users/tessacattaneo/Desktop/Dante_Rime/tesi_master/orlando_rimanti.json')
     of_rimanti_list = json.load(OrlandoFurioso)
 
-    # number_of_three_rimanti_of = 0
-    # for canto in of_rimanti_list:
-    #     for sub_list in canto: 
-    #         if len(sub_list) == 3:
-    #             number_of_three_rimanti_of += 1
-    # print(number_of_three_rimanti_of)
-    ## The number is 9684
+    number_of_three_rimanti_of = 0
+    for canto in of_rimanti_list:
+        for sub_list in canto: 
+            if len(sub_list) == 3:
+                number_of_three_rimanti_of += 1
+    print(number_of_three_rimanti_of)
+    # The number is 9684
 
 
     three_rimanti_sorted = []
@@ -55,19 +55,19 @@ def main():
                     if sorted(of_sublist) == sorted(d_sublist):
                         three_rimanti_sorted.append(sorted(of_sublist))
                         break
-    #print(three_rimanti_sorted)
+    print(len(three_rimanti_sorted))
     # The length is 840
+    # Updated: 850
+
+    # Making a set to check that there are no repetitions
+    opere_set = set(tuple(i) for i in three_rimanti_sorted)
+    print(len(opere_set))
 
     # Making a dictionary
     rimanti_dic = {}
-    for sub_list in three_rimanti_sorted:
-        key = '_'.join(sub_list)
+    for sub_set in opere_set:
+        key = '_'.join(sub_set)
         rimanti_dic[key] = {'OF': [], 'IF':[], 'PG': [], 'PD':[]}
-    print(rimanti_dic)
-
-
-    # #of_set = set(three_rimanti_sorted)
-    # #print(len(of_set))
 
     #List of all groups of three that in Ariosto and Dante, with index of the group in Ariosto
     for canto in of_rimanti_list:

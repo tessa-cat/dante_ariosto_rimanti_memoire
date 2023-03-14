@@ -216,22 +216,27 @@ def main():
     percentage_tokens = (tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto - tokens: ', percentage_tokens)
     # Percentage of citations by Ariosto - tokens:  29.860742314273914
+    # After adjustment: Percentage of citations by Ariosto - tokens:  30.29444739481914
 
     if_percentage_tokens = (if_tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto from Inferno - tokens: ', if_percentage_tokens)
     # Percentage of citations by Ariosto from Inferno - tokens:  18.74373045376763
+     # After adjustment: Percentage of citations by Ariosto from Inferno - tokens:  18.903050687437304
 
     pg_percentage_tokens = (pg_tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto from Purgatorio - tokens: ', pg_percentage_tokens)
     # Percentage of citations by Ariosto from Purgatorio - tokens:  18.224464506992387
+    # After adjustment: Percentage of citations by Ariosto from Purgatorio - tokens:  18.43984185991621
 
     pd_percentage_tokens = (pd_tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto from Paradiso - tokens: ', pd_percentage_tokens) 
-    # Percentage of citations by Ariosto from Paradiso - tokens:  15.091166578155427   
+    # Percentage of citations by Ariosto from Paradiso - tokens:  15.091166578155427  
+    # After adjustment: Percentage of citations by Ariosto from Paradiso - tokens:  15.315395055172006
 
     percentage_types = (types/set_length)*100
     print('Percentage of citations by Ariosto - types: ', percentage_types)
     # Percentage of citations by Ariosto - types:  13.803837229045222
+    # After adjustment: Percentage of citations by Ariosto - types:  14.233845804731379
 
 
 if __name__ == "__main__":
