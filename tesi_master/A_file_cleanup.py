@@ -1,19 +1,38 @@
+import os
 import re
 
 def main():
 
-    # with open ("tesi_master/File_puliti/txt/03_Paradiso.txt", "r") as If:
-    #     Inferno = If.read()
+    # Script A: the files are cleaned up and prepared for splitting up by canto
     
-    # lowerCase = Inferno.lower()
-    # noCararatteri = re.sub(r"[^\w\s]", r" ", lowerCase)
-    # cantoPulito = re.sub(r"(\s+)(\n)", r"\2", noCararatteri)
-    # noSpacesBeforeWords = re.sub(r"(\n)(\s+)", r"\1", cantoPulito)
-    # noDoubleSpaces = re.sub(r"\s{2,}", r" ", noSpacesBeforeWords)
+    # Directory where the .txt files are contained
+    folder = 'tesi_master/File_puliti/txt'
+    # Cycling through the files
+    for filename in os.listdir(folder):
+        # Identifying the 'Commedia' files (the modifications to the texts will be different depending on the selected poem)
+        if filename[0] == '0':
+            filepath = os.path.join(folder, filename)
+            
+            with open ("tesi_master/File_puliti/txt/03_Paradiso.txt", "r") as If:
+                Inferno = If.read()
+    
+            lowerCase = Inferno.lower()
+            noCararatteri = re.sub(r"[^\w\s]", r" ", lowerCase)
+            cantoPulito = re.sub(r"(\s+)(\n)", r"\2", noCararatteri)
+            noSpacesBeforeWords = re.sub(r"(\n)(\s+)", r"\1", cantoPulito)
+            noDoubleSpaces = re.sub(r"\s{2,}", r" ", noSpacesBeforeWords)
 
-    # with open("canticaParadiso.txt", "w") as testing:
-    #     testing.write(noDoubleSpaces)
+            if filename[1] == '1':
+                with open("tesi_master/cleaned_up_files/canticaInferno.txt", "w") as testing:
+                    testing.write(noDoubleSpaces)
+            if filename[1] == '2':
+                with open("tesi_master/cleaned_up_files/canticaPurgatorio.txt", "w") as testing:
+                    testing.write(noDoubleSpaces)                    
+            if filename[1] == '3':
+                with open("tesi_master/cleaned_up_files/canticaParadiso.txt", "w") as testing:
+                    testing.write(noDoubleSpaces)
 
+    # Orlando Furioso
     with open ("tesi_master/File_puliti/txt/Orlando_furioso.txt", "r") as OF:
         Orlando = OF.read()
 
@@ -27,7 +46,7 @@ def main():
     noDoubleSpaces = re.sub(r"\s{2,}", r" ", noSpacesBeforeWords)
     noDoubleNewLines = re.sub(r"(\n){2,}", r"\1", noDoubleSpaces)
 
-    with open("orlando_furioso.txt", "w") as testing:
+    with open("tesi_master/cleaned_up_files/orlando_furioso.txt", "w") as testing:
         testing.write(noDoubleNewLines)
 
 

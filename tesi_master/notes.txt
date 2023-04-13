@@ -1,6 +1,6 @@
 Groups of three of Ariosto:
 - groups of three that are in Ariosto and in Dante --> not ordered 
-- groups of three that are obtained with two grups of three/two in Dante --> comparaison entre paires --> trois paires
+[- groups of three that are obtained with two grups of three/two in Dante --> comparaison entre paires --> trois paires]
 - groups of three --> only partial citation --> we find only two of the three elements in Dante
 - groups of three --> only one pair is in Dante 
 - No citation

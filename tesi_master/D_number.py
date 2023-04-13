@@ -2,20 +2,24 @@ import re
 import json
 
 def main():
-    OrlandoFurioso = open('tesi_master/orlando_rimanti.json')
+    # Script D: This script is not particularly useful to the overall work. 
+    # It simply counts the number of couples of rimanti inside each work, 
+    # and it's then used for the first calcultion based on couples.
+
+    OrlandoFurioso = open('tesi_master/json_files/rimanti_json/orlando_rimanti.json')
     of_rimanti_list = json.load(OrlandoFurioso)
 
     # Importing the json files and opening it as a python list
     # Inferno
-    inferno = open('tesi_master/inferno_rimanti.json')
+    inferno = open('tesi_master/json_files/rimanti_json/inferno_rimanti.json.json')
     inferno_rimanti_list = json.load(inferno)
     
     # Purgtorio
-    purgatorio = open('tesi_master/purgatorio_rimanti.json')
+    purgatorio = open('tesi_master/json_files/rimanti_json/purgatorio_rimanti.json.json')
     purgatorio_rimanti_list = json.load(purgatorio)
 
     # Paradiso
-    paradiso = open('tesi_master/paradiso_rimanti.json')
+    paradiso = open('tesi_master/json_files/rimanti_json/paradiso_rimanti.json')
     paradiso_rimanti_list = json.load(paradiso)
 
 

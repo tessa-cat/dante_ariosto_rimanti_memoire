@@ -4,6 +4,17 @@ import json
 
 
 def main():
+    # Script C: Extracting the rimanti from each canto
+
+    # Some words present different spelling, since the two works have a long written tradition
+    # editions vary greatly. The different spellings are here accounted for, even though
+    # with this method it's impossible to determine weather or not all different spellings of 
+    # the same word were found. This was done by creating an alphabetized list of all rimanti which
+    # appeared in only one of the works, then manually reading through it and finding possible 
+    # couples of differently spelled words. This type of work is impossible to accomplish 
+    # without a thorough knowledge of the italian language and at least some notion of 
+    # of how it evolved through history.
+
     words_replace = [
         ['abandona', 'abbandona'],
         ['abandoni', 'abbandoni'],
@@ -104,7 +115,7 @@ def main():
 
     ### INFERNO ###
     # Directory
-    folder = 'Inferno'
+    folder = 'tesi_master/Inferno'
 
     #Comprehensive list of all the rimanti sublists by canto
     inferno_rimanti_list = []
@@ -154,7 +165,7 @@ def main():
 
     ## PURGATORIO ###
     #Directory
-    folder = 'Purgatorio'
+    folder = 'tesi_master/Purgatorio'
 
     #Comprehensive list of all the rimanti sublists by canto
     purgatorio_rimanti_list = []
@@ -205,7 +216,7 @@ def main():
 
     ### PARADISO ###
     # Directory
-    folder = 'Paradiso'
+    folder = 'tesi_master/Paradiso'
 
     #Comprehensive list of all the rimanti sublists by canto
     paradiso_rimanti_list = []
@@ -255,7 +266,7 @@ def main():
 
     # ### ORLANDO FURIOSO ###
     # Directory
-    folder = 'OF'
+    folder = 'tesi_master/OF'
 
     #Comprehensive list of all the rimanti sublists by canto
     Of_rimanti_list = []
@@ -303,16 +314,16 @@ def main():
             rimanti_in_rima.append(rimanti_C)
         Of_rimanti_list.append(rimanti_in_rima)
 
-    with open ('inferno_rimanti.json', 'w') as inf:
+    with open ('tesi_master/json_files/rimanti_json/inferno_rimanti.json', 'w') as inf:
         json.dump(inferno_rimanti_list, inf)
 
-    with open ('purgatorio_rimanti.json', 'w') as purg:
+    with open ('tesi_master/json_files/rimanti_json/purgatorio_rimanti.json', 'w') as purg:
         json.dump(purgatorio_rimanti_list, purg)
 
-    with open ('paradiso_rimanti.json', 'w') as para:
+    with open ('tesi_master/json_files/rimanti_json/paradiso_rimanti.json', 'w') as para:
         json.dump(paradiso_rimanti_list, para)
 
-    with open ('orlando_rimanti.json', 'w') as orl:
+    with open ('tesi_master/json_files/rimanti_json/orlando_rimanti.json', 'w') as orl:
         json.dump(Of_rimanti_list, orl)
 
 if __name__ == "__main__":
