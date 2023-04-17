@@ -3,22 +3,28 @@ import json
 import itertools
 
 def main():
+    # Script E: In this script the amount of riprese by Ariosto
+    # of Dante's work is calculated as follows. Because the rimanti
+    # can be distinguished in groups of three or groups of two (see readme)
+    # the groups of three rimanti are split in three groups of two rimanti.
+    # The groups of two are all put together. If the group of two in Ariosto
+    # is also present in Dante than a point is assigned over the total.
 
     # Importing the json files and opening it as a python list
     # Inferno
-    inferno = open('/Users/tessacattaneo/Desktop/Dante_Rime/tesi_master/inferno_rimanti.json')
+    inferno = open('tesi_master/json_files/rimanti_json/inferno_rimanti.json')
     inferno_rimanti_list = json.load(inferno)
 
     # Purgtorio
-    purgatorio = open('/Users/tessacattaneo/Desktop/Dante_Rime/tesi_master/purgatorio_rimanti.json')
+    purgatorio = open('tesi_master/json_files/rimanti_json/purgatorio_rimanti.json')
     purgatorio_rimanti_list = json.load(purgatorio)
 
     # Paradiso
-    paradiso = open('/Users/tessacattaneo/Desktop/Dante_Rime/tesi_master/paradiso_rimanti.json')
+    paradiso = open('tesi_master/json_files/rimanti_json/paradiso_rimanti.json')
     paradiso_rimanti_list = json.load(paradiso)
 
     # Orlando Furioso
-    OrlandoFurioso = open('/Users/tessacattaneo/Desktop/Dante_Rime/tesi_master/orlando_rimanti.json')
+    OrlandoFurioso = open('tesi_master/json_files/rimanti_json/orlando_rimanti.json')
     of_rimanti_list = json.load(OrlandoFurioso)
 
     #Creating a comprehensive list of all rimanti across the Commedia
