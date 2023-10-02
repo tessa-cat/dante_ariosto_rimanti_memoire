@@ -67,7 +67,7 @@ def main():
     with open ("tesi_master/cleaned_up_files/orlando_furioso.txt", "r") as OF:
         Orlando_furioso = OF.read()
 
-    # Split main file into each canto
+    # Split main file into each canto --> no r ????????
     canti = re.split('[A-Z]{2,}\s[A-Z]{2,}\n', Orlando_furioso)
 
     # Creating a file for each individual canto

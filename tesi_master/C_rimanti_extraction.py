@@ -250,15 +250,15 @@ def main():
         # Cycling through the list of rimanti to aggregate the ones that rhyme
         rimanti_in_rima = []
         for rimante in range (1, len(rimanti_list), 3):
-            # First set of rhymes A (B) A
+            # First set of rimanti A (B) A
             if rimante == 1:
                 rimanti = rimanti_list[rimante-1], rimanti_list[rimante+1]
                 rimanti_in_rima.append(rimanti)
-            # Last set of rhymes X (Y) X
+            # Last set of rimanti X (Y) X
             if rimante == (len(rimanti_list)-3):
                 rimanti = rimanti_list[rimante], rimanti_list[rimante+2]
                 rimanti_in_rima.append(rimanti)
-            # All of the rhymes in sets of three
+            # All of the rimanti in sets of three
             elif rimante != 1 and rimante != (len(rimanti_list)-3):
                 rimanti = rimanti_list[rimante-3], rimanti_list[rimante-1], rimanti_list[rimante+1]
                 rimanti_in_rima.append(rimanti)
@@ -301,6 +301,7 @@ def main():
                     rimanti_list[r_i] = list[1]
 
         # Cycling through the list of rimanti to aggregate the ones that rhyme
+        
         rimanti_in_rima = []
         for rimante in range (0, len(rimanti_list), 8):
             # First set of rhymes A (B) A (B) A

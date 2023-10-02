@@ -227,7 +227,7 @@ def main():
     if_percentage_tokens = (if_tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto from Inferno - tokens: ', if_percentage_tokens)
     # Percentage of citations by Ariosto from Inferno - tokens:  18.74373045376763
-     # After adjustment: Percentage of citations by Ariosto from Inferno - tokens:  18.903050687437304
+    # After adjustment: Percentage of citations by Ariosto from Inferno - tokens:  18.903050687437304
 
     pg_percentage_tokens = (pg_tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto from Purgatorio - tokens: ', pg_percentage_tokens)
