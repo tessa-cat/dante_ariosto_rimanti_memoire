@@ -68,62 +68,64 @@ def main():
     #print(number_of_three_rimanti_of)
     # The number is 9684
 
-    # # Calculating the number of riprese of Dante by Ariosto for complete groups of three
-    # three_rimanti_sorted = []
-    # for a_canto in of_rimanti_list:
-    #     for of_sublist in a_canto: 
-    #         if len(of_sublist) == 3:
-    #             for d_sublist in dante_rimanti:
-    #                 if sorted(of_sublist) == sorted(d_sublist):
-    #                     three_rimanti_sorted.append(sorted(of_sublist))
-    #                     break
-    # print(len(three_rimanti_sorted))
-    # # The length is 840
-    # # Updated: 850
+    # Calculating the number of riprese of Dante by Ariosto for complete groups of three
+    three_rimanti_sorted = []
+    for a_canto in of_rimanti_list:
+        for of_sublist in a_canto: 
+            if len(of_sublist) == 3:
+                for d_sublist in dante_rimanti:
+                    if sorted(of_sublist) == sorted(d_sublist):
+                        three_rimanti_sorted.append(sorted(of_sublist))
+                        break
+    print(len(three_rimanti_sorted))
+    # The length is 840
+    # Updated: 850
 
-    # # Making a set to check that there are no repetitions
-    # opere_set = set(tuple(i) for i in three_rimanti_sorted)
-    # print(len(opere_set))
-    # # 406
+    # Making a set to check that there are no repetitions
+    opere_set = set(tuple(i) for i in three_rimanti_sorted)
+    print(len(opere_set))
+    # 406
 
-    # # Creating a dictionary
-    # rimanti_dic = {}
-    # for sub_set in opere_set:
-    #     key = '_'.join(sub_set)
-    #     rimanti_dic[key] = {'OF': [], 'IF':[], 'PG': [], 'PD':[]}
+    # Creating a dictionary
+    rimanti_dic = {}
+    for sub_set in opere_set:
+        key = '_'.join(sub_set)
+        rimanti_dic[key] = {'OF': [], 'IF':[], 'PG': [], 'PD':[]}
 
-    # # List of all groups of three that are in Ariosto and Dante, with index of the group in Ariosto
-    # for canto in of_rimanti_list:
-    #     for of_sublist in canto:
-    #         if sorted(of_sublist) in three_rimanti_sorted:
-    #             key = '_'.join(sorted(of_sublist))
-    #             pos_canto = of_rimanti_list.index(canto) + 1
-    #             pos_verso = math.ceil(canto.index(of_sublist)/3)
-    #             value = [pos_canto, pos_verso]
-    #             rimanti_dic[key]['OF'].append(value)
+    # List of all groups of three that are in Ariosto and Dante, with index of the group in Ariosto
+    for canto in of_rimanti_list:
+        for of_sublist in canto:
+            if sorted(of_sublist) in three_rimanti_sorted:
+                key = '_'.join(sorted(of_sublist))
+                pos_canto = of_rimanti_list.index(canto) + 1
+                pos_verso = math.ceil(canto.index(of_sublist)/3)
+                value = [pos_canto, pos_verso]
+                rimanti_dic[key]['OF'].append(value)
     
-    # # Adding the information regarding the position of the rimanti in Dante's poem
-    # for canto in dante_canti:
-    #     for dante_sublist in canto:
-    #         if sorted(dante_sublist) in three_rimanti_sorted:
-    #             key = '_'.join(sorted(dante_sublist))
-    #             if dante_canti.index(canto) <= 33:
-    #                 posotion_canto = (dante_canti.index(canto)) + 1
-    #                 value = [posotion_canto, ((canto.index(dante_sublist))*3)+1]
-    #                 rimanti_dic[key]['IF'].append(value)
-    #             if dante_canti.index(canto) > 33 and dante_canti.index(canto) <= 66:
-    #                 posotion_canto = (dante_canti.index(canto)) - 33
-    #                 value = [posotion_canto, ((canto.index(dante_sublist))*3)+1]
-    #                 rimanti_dic[key]['PG'].append(value)
-    #             if dante_canti.index(canto) > 66 and dante_canti.index(canto) < 100:
-    #                 posotion_canto = (dante_canti.index(canto)) - 66
-    #                 value = [posotion_canto, ((canto.index(dante_sublist))*3)+1]
-    #                 rimanti_dic[key]['PD'].append(value)
+    # Adding the information regarding the position of the rimanti in Dante's poem
+    for canto in dante_canti:
+        for dante_sublist in canto:
+            if sorted(dante_sublist) in three_rimanti_sorted:
+                key = '_'.join(sorted(dante_sublist))
+                if dante_canti.index(canto) <= 33:
+                    posotion_canto = (dante_canti.index(canto)) + 1
+                    value = [posotion_canto, ((canto.index(dante_sublist))*3)+1]
+                    rimanti_dic[key]['IF'].append(value)
+                if dante_canti.index(canto) > 33 and dante_canti.index(canto) <= 66:
+                    posotion_canto = (dante_canti.index(canto)) - 33
+                    value = [posotion_canto, ((canto.index(dante_sublist))*3)+1]
+                    rimanti_dic[key]['PG'].append(value)
+                if dante_canti.index(canto) > 66 and dante_canti.index(canto) < 100:
+                    posotion_canto = (dante_canti.index(canto)) - 66
+                    value = [posotion_canto, ((canto.index(dante_sublist))*3)+1]
+                    rimanti_dic[key]['PD'].append(value)
 
-    # #print(rimanti_dic)
+    #print(rimanti_dic)
 
     # with open ('tesi_master/json_files/dictionaries_json/groups_of_three.json', 'w') as dic:
     #     json.dump(rimanti_dic, dic)
+    with open ('tesi_master/json_files/dictionaries_json/groups_of_three.txt', 'w') as dic:
+        json.dump(rimanti_dic, dic)
 
     #Creating a dictionary for the groups of two cited by Ariosto (complete citation)
 
@@ -192,69 +194,71 @@ def main():
 
     # with open ('tesi_master/json_files/dictionaries_json/groups_of_two.json', 'w') as dic:
     #     json.dump(two_rimanti_dic, dic)
+    # with open ('tesi_master/json_files/dictionaries_json/groups_of_two.txt', 'w') as dic:
+    #     json.dump(two_rimanti_dic, dic)
 
-    #### Partial riprese #####
-    # A group of two in Ariosto is a partial ripresa of a group of three in Dante
-    two_from_three_sorted = []
-    d_group_three = []
-    for a_rimanti in a_two_rimanti:
-        for d_sublist in dante_rimanti:
-            if len(d_sublist) == 3:
-                if a_rimanti[0] in d_sublist and a_rimanti[1] in d_sublist:
-                    two_from_three_sorted.append(sorted(a_rimanti))
-                    d_group_three.append(sorted(d_sublist))
-                    break
-    #print(len(two_from_three_sorted))
-    #print(len(d_group_three))
-    # The length is 1692
-    # 1692
+    # #### Partial riprese #####
+    # # A group of two in Ariosto is a partial ripresa of a group of three in Dante
+    # two_from_three_sorted = []
+    # d_group_three = []
+    # for a_rimanti in a_two_rimanti:
+    #     for d_sublist in dante_rimanti:
+    #         if len(d_sublist) == 3:
+    #             if a_rimanti[0] in d_sublist and a_rimanti[1] in d_sublist:
+    #                 two_from_three_sorted.append(sorted(a_rimanti))
+    #                 d_group_three.append(sorted(d_sublist))
+    #                 break
+    # #print(len(two_from_three_sorted))
+    # #print(len(d_group_three))
+    # # The length is 1692
+    # # 1692
 
-    # Making a set to check that there are no repetitions
-    two_from_three_set = set(tuple(i) for i in two_from_three_sorted)
-    #print(len(two_from_three_set))
-    d_two_from_three_set = set(tuple(i) for i in d_group_three)
-    #print(len(d_two_from_three_set))
-    # 859
-    # 727
+    # # Making a set to check that there are no repetitions
+    # two_from_three_set = set(tuple(i) for i in two_from_three_sorted)
+    # #print(len(two_from_three_set))
+    # d_two_from_three_set = set(tuple(i) for i in d_group_three)
+    # #print(len(d_two_from_three_set))
+    # # 859
+    # # 727
 
-    # Making a dictionary
-    two_from_three_rimanti_dic = {}
-    for sub_set in two_from_three_set:
-        key = '_'.join(sub_set)
-        two_from_three_rimanti_dic[key] = {'OF': [], 'IF':[], 'PG': [], 'PD':[]}
+    # # Making a dictionary
+    # two_from_three_rimanti_dic = {}
+    # for sub_set in two_from_three_set:
+    #     key = '_'.join(sub_set)
+    #     two_from_three_rimanti_dic[key] = {'OF': [], 'IF':[], 'PG': [], 'PD':[]}
 
-    for canto in of_rimanti_list:
-        for of_sublist in canto:
-            if sorted(of_sublist) in two_from_three_sorted:
-                key = '_'.join(sorted(of_sublist))
-                pos_canto = of_rimanti_list.index(canto) + 1
-                pos_verso = math.ceil(canto.index(of_sublist)/3)
-                value = [pos_canto, pos_verso]
-                two_from_three_rimanti_dic[key]['OF'].append(value)
+    # for canto in of_rimanti_list:
+    #     for of_sublist in canto:
+    #         if sorted(of_sublist) in two_from_three_sorted:
+    #             key = '_'.join(sorted(of_sublist))
+    #             pos_canto = of_rimanti_list.index(canto) + 1
+    #             pos_verso = math.ceil(canto.index(of_sublist)/3)
+    #             value = [pos_canto, pos_verso]
+    #             two_from_three_rimanti_dic[key]['OF'].append(value)
     
-    for a_two_sublist in two_from_three_set:
-        key = '_'.join(sorted(a_two_sublist))
-        for canto in dante_canti:
-            for dante_sublist in canto:
-                if len(dante_sublist) == 3:
-                    if a_two_sublist[0] in dante_sublist and a_two_sublist[1] in dante_sublist:
-                        if dante_canti.index(canto) <= 33:
-                            posotion_canto = (dante_canti.index(canto)) + 1
-                            value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
-                            two_from_three_rimanti_dic[key]['IF'].append(value)
-                        if dante_canti.index(canto) > 33 and dante_canti.index(canto) <= 66:
-                            posotion_canto = (dante_canti.index(canto)) - 33
-                            value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
-                            two_from_three_rimanti_dic[key]['PG'].append(value)
-                        if dante_canti.index(canto) > 66 and dante_canti.index(canto) < 100:
-                            posotion_canto = (dante_canti.index(canto)) - 66
-                            value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
-                            two_from_three_rimanti_dic[key]['PD'].append(value)
+    # for a_two_sublist in two_from_three_set:
+    #     key = '_'.join(sorted(a_two_sublist))
+    #     for canto in dante_canti:
+    #         for dante_sublist in canto:
+    #             if len(dante_sublist) == 3:
+    #                 if a_two_sublist[0] in dante_sublist and a_two_sublist[1] in dante_sublist:
+    #                     if dante_canti.index(canto) <= 33:
+    #                         posotion_canto = (dante_canti.index(canto)) + 1
+    #                         value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
+    #                         two_from_three_rimanti_dic[key]['IF'].append(value)
+    #                     if dante_canti.index(canto) > 33 and dante_canti.index(canto) <= 66:
+    #                         posotion_canto = (dante_canti.index(canto)) - 33
+    #                         value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
+    #                         two_from_three_rimanti_dic[key]['PG'].append(value)
+    #                     if dante_canti.index(canto) > 66 and dante_canti.index(canto) < 100:
+    #                         posotion_canto = (dante_canti.index(canto)) - 66
+    #                         value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
+    #                         two_from_three_rimanti_dic[key]['PD'].append(value)
 
     # with open ('tesi_master/json_files/dictionaries_json/groups_two_from_three.json', 'w') as dic:
     #     json.dump(two_from_three_rimanti_dic, dic)
-    with open ('tesi_master/json_files/dictionaries_json/groups_two_from_three.txt', 'w') as dic:
-        json.dump(two_from_three_rimanti_dic, dic)
+    # with open ('tesi_master/json_files/dictionaries_json/groups_two_from_three.txt', 'w') as dic:
+    #     json.dump(two_from_three_rimanti_dic, dic)
 
     # # A group of three in Ariosto partially riprende a group of three in Dante
     # three_of_three_sorted = []
