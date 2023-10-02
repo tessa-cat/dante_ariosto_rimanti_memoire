@@ -193,6 +193,7 @@ def main():
     # with open ('tesi_master/json_files/dictionaries_json/groups_of_two.json', 'w') as dic:
     #     json.dump(two_rimanti_dic, dic)
 
+    #### Partial riprese #####
     # A group of two in Ariosto is a partial ripresa of a group of three in Dante
     two_from_three_sorted = []
     d_group_three = []
@@ -203,16 +204,16 @@ def main():
                     two_from_three_sorted.append(sorted(a_rimanti))
                     d_group_three.append(sorted(d_sublist))
                     break
-    print(len(two_from_three_sorted))
-    print(len(d_group_three))
+    #print(len(two_from_three_sorted))
+    #print(len(d_group_three))
     # The length is 1692
     # 1692
 
     # Making a set to check that there are no repetitions
     two_from_three_set = set(tuple(i) for i in two_from_three_sorted)
-    print(len(two_from_three_set))
+    #print(len(two_from_three_set))
     d_two_from_three_set = set(tuple(i) for i in d_group_three)
-    print(len(d_two_from_three_set))
+    #print(len(d_two_from_three_set))
     # 859
     # 727
 
@@ -239,19 +240,149 @@ def main():
                     if a_two_sublist[0] in dante_sublist and a_two_sublist[1] in dante_sublist:
                         if dante_canti.index(canto) <= 33:
                             posotion_canto = (dante_canti.index(canto)) + 1
-                            value = [posotion_canto, ((canto.index(dante_sublist))*3)+1]
+                            value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
                             two_from_three_rimanti_dic[key]['IF'].append(value)
                         if dante_canti.index(canto) > 33 and dante_canti.index(canto) <= 66:
                             posotion_canto = (dante_canti.index(canto)) - 33
-                            value = [posotion_canto, ((canto.index(dante_sublist))*3)+1]
+                            value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
                             two_from_three_rimanti_dic[key]['PG'].append(value)
                         if dante_canti.index(canto) > 66 and dante_canti.index(canto) < 100:
                             posotion_canto = (dante_canti.index(canto)) - 66
-                            value = [posotion_canto, ((canto.index(dante_sublist))*3)+1]
+                            value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
                             two_from_three_rimanti_dic[key]['PD'].append(value)
 
-    with open ('tesi_master/json_files/dictionaries_json/groups_two_from_three.json', 'w') as dic:
+    # with open ('tesi_master/json_files/dictionaries_json/groups_two_from_three.json', 'w') as dic:
+    #     json.dump(two_from_three_rimanti_dic, dic)
+    with open ('tesi_master/json_files/dictionaries_json/groups_two_from_three.txt', 'w') as dic:
         json.dump(two_from_three_rimanti_dic, dic)
+
+    # # A group of three in Ariosto partially riprende a group of three in Dante
+    # three_of_three_sorted = []
+    # for a_canto in of_rimanti_list:
+    #     for of_sublist in a_canto: 
+    #         if len(of_sublist) == 3:
+    #             for d_sublist in dante_rimanti:
+    #                 if (of_sublist[0] in d_sublist and of_sublist[1] in d_sublist) or (of_sublist[0] in d_sublist and of_sublist[2] in d_sublist) or (of_sublist[1] in d_sublist and of_sublist[2] in d_sublist):
+    #                     three_of_three_sorted.append(sorted(of_sublist))
+    #                     break
+    # print(len(three_of_three_sorted))
+    # # 5306
+
+    # # Making a set to check that there are no repetitions
+    # three_from_three_set = set(tuple(i) for i in three_of_three_sorted)
+    # print(len(three_from_three_set))
+    # # 3715
+
+    # # Making a dictionary
+    # three_from_three_rimanti_dic = {}
+    # for sub_set in three_from_three_set:
+    #     key = '_'.join(sub_set)
+    #     three_from_three_rimanti_dic[key] = {'OF': [], 'IF':[], 'PG': [], 'PD':[]}
+
+    # for canto in of_rimanti_list:
+    #     for of_sublist in canto:
+    #         if sorted(of_sublist) in three_of_three_sorted:
+    #             key = '_'.join(sorted(of_sublist))
+    #             pos_canto = of_rimanti_list.index(canto) + 1
+    #             pos_verso = math.ceil(canto.index(of_sublist)/3)
+    #             value = [pos_canto, pos_verso]
+    #             three_from_three_rimanti_dic[key]['OF'].append(value)
+
+    # for a_two_sublist in three_from_three_set:
+    #     key = '_'.join(sorted(a_two_sublist))
+    #     for canto in dante_canti:
+    #         for dante_sublist in canto:
+    #             if len(dante_sublist) == 3:
+    #                 if (a_two_sublist[0] in dante_sublist and a_two_sublist[1] in dante_sublist) or (a_two_sublist[0] in dante_sublist and a_two_sublist[2] in dante_sublist) or (a_two_sublist[1] in dante_sublist and a_two_sublist[2] in dante_sublist):
+    #                     if dante_canti.index(canto) <= 33:
+    #                         posotion_canto = (dante_canti.index(canto)) + 1
+    #                         value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
+    #                         three_from_three_rimanti_dic[key]['IF'].append(value)
+    #                     if dante_canti.index(canto) > 33 and dante_canti.index(canto) <= 66:
+    #                         posotion_canto = (dante_canti.index(canto)) - 33
+    #                         value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
+    #                         three_from_three_rimanti_dic[key]['PG'].append(value)
+    #                     if dante_canti.index(canto) > 66 and dante_canti.index(canto) < 100:
+    #                         posotion_canto = (dante_canti.index(canto)) - 66
+    #                         value = [dante_sublist, posotion_canto, ((canto.index(dante_sublist))*3)+1]
+    #                         three_from_three_rimanti_dic[key]['PD'].append(value)
+
+    # with open ('tesi_master/json_files/dictionaries_json/groups_three_from_three.json', 'w') as dic:
+    #     json.dump(three_from_three_rimanti_dic, dic)
+    # with open ('tesi_master/json_files/dictionaries_json/groups_three_from_three.txt', 'w') as dic:
+    #     json.dump(three_from_three_rimanti_dic, dic)
+
+    #  # A group of three in Ariosto partially riprende a group of two in Dante
+    # three_of_two_sorted = []
+    # for a_canto in of_rimanti_list:
+    #     for of_sublist in a_canto:
+    #         if len(of_sublist) == 3:
+    #             for d_sublist in dante_two_rimanti:
+    #                 if (of_sublist[0] in d_sublist and of_sublist[1] in d_sublist) or (of_sublist[0] in d_sublist and of_sublist[2] in d_sublist) or (of_sublist[1] in d_sublist and of_sublist[2] in d_sublist):
+    #                     three_of_two_sorted.append(sorted(of_sublist))
+    #                     break
+    # print(len(three_of_two_sorted))
+    # # 369
+
+    # # Making a set to check that there are no repetitions
+    # three_from_two_set = set(tuple(i) for i in three_of_two_sorted)
+    # print(len(three_from_two_set))
+    # # 225
+
+    # # Making a dictionary
+    # three_from_two_rimanti_dic = {}
+    # for sub_set in three_from_two_set:
+    #     key = '_'.join(sub_set)
+    #     three_from_two_rimanti_dic[key] = {'OF': [], 'IF':[], 'PG': [], 'PD':[]}
+
+    # for canto in of_rimanti_list:
+    #     for of_sublist in canto:
+    #         if sorted(of_sublist) in three_of_two_sorted:
+    #             key = '_'.join(sorted(of_sublist))
+    #             pos_canto = of_rimanti_list.index(canto) + 1
+    #             pos_verso = math.ceil(canto.index(of_sublist)/3)
+    #             value = [pos_canto, pos_verso]
+    #             three_from_two_rimanti_dic[key]['OF'].append(value)
+
+    # for a_sublist in three_from_two_set:
+    #     key = '_'.join(sorted(a_sublist))
+    #     for canto in dante_canti:
+    #         for dante_sublist in canto:
+    #             if len(dante_sublist) == 2:
+    #                 if (a_sublist[0] in dante_sublist and a_sublist[1] in dante_sublist) or (a_sublist[0] in dante_sublist and a_sublist[2] in dante_sublist) or (a_sublist[1] in dante_sublist and a_sublist[2] in dante_sublist):
+    #                     if dante_canti.index(canto) <= 33:
+    #                         posotion_canto = (dante_canti.index(canto)) + 1
+    #                         position_verse = (canto.index(dante_sublist))
+    #                         if position_verse == 0:
+    #                             value = [dante_sublist, posotion_canto, (position_verse + 1)]
+    #                             three_from_two_rimanti_dic[key]['IF'].append(value)
+    #                         elif position_verse > 0:
+    #                             value = [dante_sublist, posotion_canto, ((position_verse * 3) + 2)]
+    #                             three_from_two_rimanti_dic[key]['IF'].append(value)
+    #                     if dante_canti.index(canto) > 33 and dante_canti.index(canto) <= 66:
+    #                         posotion_canto = (dante_canti.index(canto)) - 33
+    #                         position_verse = (canto.index(dante_sublist))
+    #                         if position_verse == 0:
+    #                             value = [dante_sublist, posotion_canto, (position_verse + 1)]
+    #                             three_from_two_rimanti_dic[key]['PG'].append(value)
+    #                         elif position_verse > 0:
+    #                             value = [dante_sublist, posotion_canto, ((position_verse * 3) + 2)]
+    #                             three_from_two_rimanti_dic[key]['PG'].append(value)
+    #                     if dante_canti.index(canto) > 66 and dante_canti.index(canto) < 100:
+    #                         posotion_canto = (dante_canti.index(canto)) - 66
+    #                         position_verse = (canto.index(dante_sublist))
+    #                         if position_verse == 0:
+    #                             value = [dante_sublist, posotion_canto, (position_verse + 1)]
+    #                             three_from_two_rimanti_dic[key]['PD'].append(value)
+    #                         elif position_verse > 0:
+    #                             value = [dante_sublist, posotion_canto, ((position_verse * 3) + 2)]
+    #                             three_from_two_rimanti_dic[key]['PD'].append(value)
+    #                     break
+
+    # with open ('tesi_master/json_files/dictionaries_json/groups_three_from_two.json', 'w') as dic:
+    #     json.dump(three_from_two_rimanti_dic, dic)
+    # with open ('tesi_master/json_files/dictionaries_json/groups_three_from_two.txt', 'w') as dic:
+    #     json.dump(three_from_two_rimanti_dic, dic)
 
 if __name__ == "__main__":
     main()
