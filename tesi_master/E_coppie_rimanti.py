@@ -178,7 +178,7 @@ def main():
                 #print(of_sub_list, d_sublist)
                 tokens += 1
                 break
-    print(tokens)
+    print('Couples used by Ariosto:', tokens)
 
     if_tokens = 0
     for of_sub_list in of_sorted:
