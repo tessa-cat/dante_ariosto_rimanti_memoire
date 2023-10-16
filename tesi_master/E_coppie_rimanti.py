@@ -111,10 +111,10 @@ def main():
     for coppia in of_coppie_rimanti:
         if coppia[0] == coppia[1]:
             double_rimanti += 1
-    #print(double_rimanti)
+    print(double_rimanti)
 
-    #calcolo = (double_rimanti/33894)*100
-    #print(calcolo)
+    calcolo = (double_rimanti/33894)*100
+    print(calcolo)
     # About 1%
 
     # Making sure that the list is composed of sublists
@@ -173,11 +173,10 @@ def main():
     # Caculating how many of the couples used by Ariosto are taken from Dante
     tokens = 0
     for of_sub_list in of_sorted:
-        for d_sublist in d_sorted:
-            if of_sub_list == d_sublist:
+        if of_sub_list in d_sorted:
                 #print(of_sub_list, d_sublist)
                 tokens += 1
-                break
+                #break
     print('Couples used by Ariosto:', tokens)
 
     if_tokens = 0
@@ -205,6 +204,7 @@ def main():
     #Creating a set of tuples
     of_set = set(tuple(i) for i in of_sorted)
     set_length = len(of_set)
+    print('OF set (types):', set_length)
 
     d_set = set(tuple(i) for i in d_sorted)
     print(len(d_set))
