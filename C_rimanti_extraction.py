@@ -115,7 +115,7 @@ def main():
 
     ### INFERNO ###
     # Directory
-    folder = 'tesi_master/Inferno'
+    folder = 'Inferno'
 
     #Comprehensive list of all the rimanti sublists by canto
     inferno_rimanti_list = []
@@ -165,7 +165,7 @@ def main():
 
     ## PURGATORIO ###
     #Directory
-    folder = 'tesi_master/Purgatorio'
+    folder = 'Purgatorio'
 
     #Comprehensive list of all the rimanti sublists by canto
     purgatorio_rimanti_list = []
@@ -216,7 +216,7 @@ def main():
 
     ### PARADISO ###
     # Directory
-    folder = 'tesi_master/Paradiso'
+    folder = 'Paradiso'
 
     #Comprehensive list of all the rimanti sublists by canto
     paradiso_rimanti_list = []
@@ -266,7 +266,7 @@ def main():
 
     # ### ORLANDO FURIOSO ###
     # Directory
-    folder = 'tesi_master/OF'
+    folder = 'OF'
 
     #Comprehensive list of all the rimanti sublists by canto
     Of_rimanti_list = []
@@ -314,17 +314,18 @@ def main():
             rimanti_C = rimanti_list[rimante+6], rimanti_list[rimante+7]
             rimanti_in_rima.append(rimanti_C)
         Of_rimanti_list.append(rimanti_in_rima)
-
-    with open ('tesi_master/json_files/rimanti_json/inferno_rimanti.json', 'w') as inf:
+    
+    # Printing all rimanti in json files
+    with open ('json_files/rimanti_json/inferno_rimanti.json', 'w') as inf:
         json.dump(inferno_rimanti_list, inf)
 
-    with open ('tesi_master/json_files/rimanti_json/purgatorio_rimanti.json', 'w') as purg:
+    with open ('json_files/rimanti_json/purgatorio_rimanti.json', 'w') as purg:
         json.dump(purgatorio_rimanti_list, purg)
 
-    with open ('tesi_master/json_files/rimanti_json/paradiso_rimanti.json', 'w') as para:
+    with open ('json_files/rimanti_json/paradiso_rimanti.json', 'w') as para:
         json.dump(paradiso_rimanti_list, para)
 
-    with open ('tesi_master/json_files/rimanti_json/orlando_rimanti.json', 'w') as orl:
+    with open ('json_files/rimanti_json/orlando_rimanti.json', 'w') as orl:
         json.dump(Of_rimanti_list, orl)
 
 if __name__ == "__main__":

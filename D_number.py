@@ -6,23 +6,22 @@ def main():
     # It simply counts the number of couples of rimanti inside each work, 
     # and it's then used for the first calcultion based on couples.
 
-    OrlandoFurioso = open('tesi_master/json_files/rimanti_json/orlando_rimanti.json')
-    of_rimanti_list = json.load(OrlandoFurioso)
-
-    # Importing the json files and opening it as a python list
-    # Inferno
-    inferno = open('tesi_master/json_files/rimanti_json/inferno_rimanti.json.json')
+    inferno = open('json_files/rimanti_json/inferno_rimanti.json')
     inferno_rimanti_list = json.load(inferno)
-    
+
     # Purgtorio
-    purgatorio = open('tesi_master/json_files/rimanti_json/purgatorio_rimanti.json.json')
+    purgatorio = open('json_files/rimanti_json/purgatorio_rimanti.json')
     purgatorio_rimanti_list = json.load(purgatorio)
 
     # Paradiso
-    paradiso = open('tesi_master/json_files/rimanti_json/paradiso_rimanti.json')
+    paradiso = open('json_files/rimanti_json/paradiso_rimanti.json')
     paradiso_rimanti_list = json.load(paradiso)
 
+    # Orlando Furioso
+    OrlandoFurioso = open('json_files/rimanti_json/orlando_rimanti.json')
+    of_rimanti_list = json.load(OrlandoFurioso)
 
+    # Total number of couples of rimanti for OF
     tot_OF = 0
 
     for canto in of_rimanti_list:
@@ -36,6 +35,7 @@ def main():
     
     print(tot_OF)
 
+    # Total number of couples of rimanti for IF
     tot_If = 0
     for canto in inferno_rimanti_list:
         canto_index = inferno_rimanti_list.index(canto)
@@ -48,6 +48,7 @@ def main():
     
     print(tot_If)
 
+    # Total number of couples of rimanti for PG
     tot_Pg = 0
     for canto in purgatorio_rimanti_list:
         canto_index = purgatorio_rimanti_list.index(canto)
@@ -60,6 +61,7 @@ def main():
     
     print(tot_Pg)
 
+    # Total number of couples of rimanti for PD
     tot_Pd = 0
     for canto in paradiso_rimanti_list:
         canto_index = paradiso_rimanti_list.index(canto)
@@ -72,6 +74,7 @@ def main():
     
     print(tot_Pd)
 
+    # Total number of couples of rimanti for the whole Commedia
     tot_dante = tot_If + tot_Pg + tot_Pd
     print(tot_dante)
 

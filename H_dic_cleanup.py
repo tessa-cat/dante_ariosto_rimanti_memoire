@@ -4,9 +4,10 @@ import math
 import re
 
 def main():
+    # Script H: cleanup of the json files to print in the Appendix of the mémoire. Each dictionary functions a little differently so a script had to be written for each
     # with open('tesi_master/json_files/dictionaries_json/group_A.txt', 'r') as dictionary:
     # # Reading from json file
-    #     json_1_dic = dictionary.read()
+    # json_1_dic = dictionary.read()
 
     # clean_file_if = re.sub(r'"IF": \[\],', '', json_1_dic)
     # clean_file_pg = re.sub(r'"PG": \[\],', '', clean_file_if)

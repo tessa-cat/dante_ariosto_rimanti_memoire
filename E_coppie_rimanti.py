@@ -4,7 +4,7 @@ import itertools
 
 def main():
     # Script E: In this script the amount of riprese by Ariosto
-    # of Dante's work is calculated as follows. Because the rimanti
+    # of Dante's work is calculated as follows: because the rimanti
     # can be distinguished in groups of three or groups of two (see readme)
     # the groups of three rimanti are split in three groups of two rimanti.
     # The groups of two are all put together. If the group of two in Ariosto
@@ -12,19 +12,19 @@ def main():
 
     # Importing the json files and opening it as a python list
     # Inferno
-    inferno = open('tesi_master/json_files/rimanti_json/inferno_rimanti.json')
+    inferno = open('json_files/rimanti_json/inferno_rimanti.json')
     inferno_rimanti_list = json.load(inferno)
 
     # Purgtorio
-    purgatorio = open('tesi_master/json_files/rimanti_json/purgatorio_rimanti.json')
+    purgatorio = open('json_files/rimanti_json/purgatorio_rimanti.json')
     purgatorio_rimanti_list = json.load(purgatorio)
 
     # Paradiso
-    paradiso = open('tesi_master/json_files/rimanti_json/paradiso_rimanti.json')
+    paradiso = open('json_files/rimanti_json/paradiso_rimanti.json')
     paradiso_rimanti_list = json.load(paradiso)
 
     # Orlando Furioso
-    OrlandoFurioso = open('tesi_master/json_files/rimanti_json/orlando_rimanti.json')
+    OrlandoFurioso = open('json_files/rimanti_json/orlando_rimanti.json')
     of_rimanti_list = json.load(OrlandoFurioso)
 
     #Creating a comprehensive list of all rimanti across the Commedia
@@ -170,7 +170,7 @@ def main():
     for sub_list in new_pd_list:
         pd_sorted.append(sorted(sub_list))
 
-    # Caculating how many of the couples used by Ariosto are taken from Dante
+    # Caculating how many of the couples used by Ariosto coincide with Dante's
     tokens = 0
     for of_sub_list in of_sorted:
         if of_sub_list in d_sorted:
