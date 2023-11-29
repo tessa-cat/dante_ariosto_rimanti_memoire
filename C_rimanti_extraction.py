@@ -146,22 +146,19 @@ def main():
                 if rimante in list:
                     rimanti_list[r_i] = list[1]
 
-        # Cycling through the list of rimanti to aggregate the ones that rhyme
-        rimanti_in_rima = []
-        for rimante in range (1, len(rimanti_list), 3):
-            # First set of rhymes A (B) A
-            if rimante == 1:
-                rimanti = rimanti_list[rimante-1], rimanti_list[rimante+1]
-                rimanti_in_rima.append(rimanti)
-            # Last set of rhymes X (Y) X
-            if rimante == (len(rimanti_list)-3):
-                rimanti = rimanti_list[rimante], rimanti_list[rimante+2]
-                rimanti_in_rima.append(rimanti)
-            # All of the rhymes in sets of three
-            elif rimante != 1 and rimante != (len(rimanti_list)-3):
-                rimanti = rimanti_list[rimante-3], rimanti_list[rimante-1], rimanti_list[rimante+1]
-                rimanti_in_rima.append(rimanti)
-        inferno_rimanti_list.append(rimanti_in_rima)
+        inferno_rimanti_list = []
+        # First set of rhymes A (B) A
+        rimanti = rimanti_list[0], rimanti_list[2]
+        inferno_rimanti_list.append(rimanti)
+
+        # All of the rhymes in sets of three
+        for rimante in range (1, len(rimanti_list)-5, 3):
+            rimanti = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
+            inferno_rimanti_list.append(rimanti)
+        
+        # Last set of rhymes X (Y) X
+        rimanti = rimanti_list[-3], rimanti_list[-1]
+        inferno_rimanti_list.append(rimanti)
 
     ## PURGATORIO ###
     #Directory
@@ -196,22 +193,18 @@ def main():
                 if rimante in list:
                     rimanti_list[r_i] = list[1]
 
-        # Cycling through the list of rimanti to aggregate the ones that rhyme
-        rimanti_in_rima = []
-        for rimante in range (1, len(rimanti_list), 3):
-            # First set of rhymes A (B) A
-            if rimante == 1:
-                rimanti = rimanti_list[rimante-1], rimanti_list[rimante+1]
-                rimanti_in_rima.append(rimanti)
-            # Last set of rhymes X (Y) X
-            if rimante == (len(rimanti_list)-3):
-                rimanti = rimanti_list[rimante], rimanti_list[rimante+2]
-                rimanti_in_rima.append(rimanti)
-            # All of the rhymes in sets of three
-            elif rimante != 1 and rimante != (len(rimanti_list)-3):
-                rimanti = rimanti_list[rimante-3], rimanti_list[rimante-1], rimanti_list[rimante+1]
-                rimanti_in_rima.append(rimanti)
-        purgatorio_rimanti_list.append(rimanti_in_rima)   
+        # First set of rhymes A (B) A
+        rimanti = rimanti_list[0], rimanti_list[2]
+        purgatorio_rimanti_list.append(rimanti)  
+
+        # All of the rhymes in sets of three
+        for rimante in range (1, len(rimanti_list)-5, 3):
+            rimanti = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
+            purgatorio_rimanti_list.append(rimanti)  
+        
+        # Last set of rhymes X (Y) X
+        rimanti = rimanti_list[-3], rimanti_list[-1]
+        purgatorio_rimanti_list.append(rimanti)  
 
 
     ### PARADISO ###
@@ -247,22 +240,18 @@ def main():
                 if rimante in list:
                     rimanti_list[r_i] = list[1]
 
-        # Cycling through the list of rimanti to aggregate the ones that rhyme
-        rimanti_in_rima = []
-        for rimante in range (1, len(rimanti_list), 3):
-            # First set of rimanti A (B) A
-            if rimante == 1:
-                rimanti = rimanti_list[rimante-1], rimanti_list[rimante+1]
-                rimanti_in_rima.append(rimanti)
-            # Last set of rimanti X (Y) X
-            if rimante == (len(rimanti_list)-3):
-                rimanti = rimanti_list[rimante], rimanti_list[rimante+2]
-                rimanti_in_rima.append(rimanti)
-            # All of the rimanti in sets of three
-            elif rimante != 1 and rimante != (len(rimanti_list)-3):
-                rimanti = rimanti_list[rimante-3], rimanti_list[rimante-1], rimanti_list[rimante+1]
-                rimanti_in_rima.append(rimanti)
-        paradiso_rimanti_list.append(rimanti_in_rima)
+        # First set of rhymes A (B) A
+        rimanti = rimanti_list[0], rimanti_list[2]
+        paradiso_rimanti_list.append(rimanti)  
+
+        # All of the rhymes in sets of three
+        for rimante in range (1, len(rimanti_list)-5, 3):
+            rimanti = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
+            paradiso_rimanti_list.append(rimanti)  
+        
+        # Last set of rhymes X (Y) X
+        rimanti = rimanti_list[-3], rimanti_list[-1]
+        paradiso_rimanti_list.append(rimanti)  
 
     # ### ORLANDO FURIOSO ###
     # Directory
@@ -301,19 +290,16 @@ def main():
                     rimanti_list[r_i] = list[1]
 
         # Cycling through the list of rimanti to aggregate the ones that rhyme
-        
-        rimanti_in_rima = []
         for rimante in range (0, len(rimanti_list), 8):
             # First set of rhymes A (B) A (B) A
             rimanti_A = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
-            rimanti_in_rima.append(rimanti_A)
+            Of_rimanti_list.append(rimanti_A)
             # Second set B (A) B (A) B
             rimanti_B = rimanti_list[rimante+1], rimanti_list[rimante+3], rimanti_list[rimante+5]
-            rimanti_in_rima.append(rimanti_B)
+            Of_rimanti_list.append(rimanti_B)
             # Last set C C
             rimanti_C = rimanti_list[rimante+6], rimanti_list[rimante+7]
-            rimanti_in_rima.append(rimanti_C)
-        Of_rimanti_list.append(rimanti_in_rima)
+            Of_rimanti_list.append(rimanti_C)
     
     # Printing all rimanti in json files
     with open ('json_files/rimanti_json/inferno_rimanti.json', 'w') as inf:

@@ -41,13 +41,14 @@ def main():
     for gruppo_rimanti in if_opera_completa :
         if len(gruppo_rimanti) < 3:
             if_coppie_rimanti.append(gruppo_rimanti)
+            dante_rimanti.append(gruppo_rimanti)
         elif len(gruppo_rimanti) == 3:
             combinations = list(itertools.combinations(gruppo_rimanti, 2))
             for combination in combinations:
                 if_coppie_rimanti.append(combination)
                 dante_rimanti.append(combination) 
 
-   #print(len(if_coppie_rimanti))
+    #print('coppie if', len(if_coppie_rimanti))
    
     # PURGATORIO
     pg_opera_completa = []
@@ -59,13 +60,14 @@ def main():
     for gruppo_rimanti in pg_opera_completa :
         if len(gruppo_rimanti) < 3:
             pg_coppie_rimanti.append(gruppo_rimanti)
+            dante_rimanti.append(gruppo_rimanti)
         elif len(gruppo_rimanti) == 3:
             combinations = list(itertools.combinations(gruppo_rimanti, 2))
             for combination in combinations:
                 pg_coppie_rimanti.append(combination)
                 dante_rimanti.append(combination)
 
-    #print(len(pg_coppie_rimanti))
+    #print('coppie pg', len(pg_coppie_rimanti))
 
     # PARADISO
     pd_opera_completa = []
@@ -77,14 +79,15 @@ def main():
     for gruppo_rimanti in pd_opera_completa :
         if len(gruppo_rimanti) < 3:
             pd_coppie_rimanti.append(gruppo_rimanti)
+            dante_rimanti.append(gruppo_rimanti)
         elif len(gruppo_rimanti) == 3:
             combinations = list(itertools.combinations(gruppo_rimanti, 2))
             for combination in combinations:
                 pd_coppie_rimanti.append(combination)
                 dante_rimanti.append(combination)
 
-    #print(len(pd_coppie_rimanti))
-    #print(len(dante_rimanti))
+    #print('coppie pd', len(pd_coppie_rimanti))
+
     # ORLANDO FURIOSO
     of_opera_completa = []
     for canto in of_rimanti_list :
@@ -114,7 +117,7 @@ def main():
     print(double_rimanti)
 
     calcolo = (double_rimanti/33894)*100
-    print(calcolo)
+    #print(calcolo)
     # About 1%
 
     # Making sure that the list is composed of sublists
@@ -128,7 +131,7 @@ def main():
     of_sorted = []
     for sub_list in new_of_list:
         of_sorted.append(sorted(sub_list))
-    print(len(of_sorted))
+    #print(len(of_sorted))
 
     # Making sure that all sub lists are in fact a list
     new_dante_list = []
@@ -140,7 +143,7 @@ def main():
     d_sorted = []
     for sub_list in new_dante_list:
         d_sorted.append(sorted(sub_list))
-    print(len(d_sorted))
+    print('len d_sorted', len(d_sorted))
 
     #Inferno
     new_if_list = []
@@ -200,6 +203,8 @@ def main():
                 pd_tokens += 1
                 break
     
+    print('Tokens for each cantica: ', if_tokens, pg_tokens, pd_tokens)
+    
     ## TYPES
     #Creating a set of tuples
     of_set = set(tuple(i) for i in of_sorted)
@@ -207,7 +212,7 @@ def main():
     print('OF set (types):', set_length)
 
     d_set = set(tuple(i) for i in d_sorted)
-    print(len(d_set))
+    print('d_set length: ', len(d_set))
 
     types = 0
     for of_sub_list in of_set:
@@ -221,28 +226,23 @@ def main():
     
     percentage_tokens = (tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto - tokens: ', percentage_tokens)
-    # Percentage of citations by Ariosto - tokens:  29.860742314273914
-    # After adjustment: Percentage of citations by Ariosto - tokens:  30.29444739481914
+    # Percentage of citations by Ariosto - tokens:  30.53637812002124
 
     if_percentage_tokens = (if_tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto from Inferno - tokens: ', if_percentage_tokens)
-    # Percentage of citations by Ariosto from Inferno - tokens:  18.74373045376763
-    # After adjustment: Percentage of citations by Ariosto from Inferno - tokens:  18.903050687437304
+    # Percentage of citations by Ariosto from Inferno - tokens:  18.903050687437304
 
     pg_percentage_tokens = (pg_tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto from Purgatorio - tokens: ', pg_percentage_tokens)
-    # Percentage of citations by Ariosto from Purgatorio - tokens:  18.224464506992387
-    # After adjustment: Percentage of citations by Ariosto from Purgatorio - tokens:  18.43984185991621
+    # Percentage of citations by Ariosto from Purgatorio - tokens:  18.43984185991621
 
     pd_percentage_tokens = (pd_tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto from Paradiso - tokens: ', pd_percentage_tokens) 
-    # Percentage of citations by Ariosto from Paradiso - tokens:  15.091166578155427  
-    # After adjustment: Percentage of citations by Ariosto from Paradiso - tokens:  15.315395055172006
+    # Percentage of citations by Ariosto from Paradiso - tokens:  15.315395055172006
 
     percentage_types = (types/set_length)*100
     print('Percentage of citations by Ariosto - types: ', percentage_types)
-    # Percentage of citations by Ariosto - types:  13.803837229045222
-    # After adjustment: Percentage of citations by Ariosto - types:  14.233845804731379
+    # Percentage of citations by Ariosto - types:  14.42105860327906
 
 
 if __name__ == "__main__":
