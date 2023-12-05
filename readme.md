@@ -14,12 +14,12 @@ The text file of _Orlando Furioso_ was downloaded from liberliber.it (https://ww
 
 ## _Ottava_ and _terza rima_
 The rhythmic systems of _Orlando Furioso_ and the _Divine Comedy_ particularly lend themselves to rhythmic and lexis exchanges. Both are constituted of alternating groups of two and three rhyming words (as shown in the scheme below). 
-![illustration](images.Ottava_rima.png)
+![illustration](images/Ottava_rima.png)
 
 ## Rimanti extraction and categorization of possible reprisals
 The rhythmic scheme of the two poems were used to extract the rimanti and assembling lists of groups of two and three rimanti that rhyme between them. The groups of rimanti from _Orlando Furioso_ were then compared to the groups from the _Divine Commedy_. A possible reprisal was defined as the coincidence in the two works of at least two rimanti of a group (whether it consists of two or three rimanti). The possible reprisals were categorized as follows: a group of three _Furioso_ rimanti corresponds to a group of three _Divina Commedia_ rimanti (Category A), a group of three _Furioso_ rimanti corresponds to subgroups of different groups in the _Divina Commedia_ (Category B), two rimanti of a group of three _Furioso_ rimanti correspond to two rimanti of a group of two or three _Divina Commedia_ rimanti (partial reprisal, Category C), a group of two _Furioso_ rimanti corresponds to a group of two _Divina Commedia_ rimanti (Category D), a group of two _Furioso_ rimanti corresponds to a part of a group of three _Divina Commedia_ rimanti (Category E). All the correspondences gathered by the script were compiled in JSON dictionaries which not only illustrate the group of rimanti analyzed but also the position of each correspondence within the two works. 
 A first quantitative result was obtained by breaking down each group of three rimanti in three couples of two rimanti (see example below) and then adding the groups of two rimanti to the list of couples of two.
-![illustration](images.veltro.png)
+![illustration](images/veltro.png)
 It was found that about 30.5% (tokens) of the rimanti of _Orlando Furioso_ are also found in the _Divine Comedy_ (the number is reduced to 14.4% when calculating in types).
 
 ## Research limits
