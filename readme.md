@@ -27,4 +27,4 @@ It was found that about 30.5% (tokens) of the rimanti of _Orlando Furioso_ are a
 - The data collected in the JSON dictionary by itself is not conclusive evidence of reprisal, each instance of coincidence between the two works has to be further analyzed in its textual context
 
 ## Script
-The Python script for this project is divided in 7 different subscripts, each with a specific aim. This was the first actual big project in Python by the author and she recognizes that it is not particularly efficient or up to the standards of modern-day coding. _Abandon all hope [of finding here good code], ye who enter_ and expect to find much redundance and no functions at all.
+The Python script for this project is divided in 7 different subscripts, each with a specific aim. This was the first actual big project in Python by the author and she recognizes that it is not particularly efficient or up to the standards of modern-day coding. _Abandon all hope [of finding good code here], ye who enter_ and expect to find much redundance and no functions at all.
