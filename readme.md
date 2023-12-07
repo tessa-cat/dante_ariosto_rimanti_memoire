@@ -2,7 +2,7 @@
 # How Ariosto references the rimanti of the _Commedia_ in _Orlando Furioso_: A comparative study conducted using computational tools
 
 ## Context
-This project was developed as part of a Master's thesis in Italian literature and Digital Humanities from the university of Lausanne (UNIL), presented in January 2024. 
+This project was developed as part of a Master's thesis in Italian literature and Digital Humanities from the university of Lausanne (UNIL), presented in January 2024 under the direction of Prof. Simone Albonico and Prof. Aris Xanthos.
 
 ## Overview
 This project, developed in Python, aims to compare the rimanti (end-words of verses that contain the rhymes) of the _Divine Comedy_ from Dante Alighieri and _Orlando Furioso_ from Ludovico Ariosto to ascertain how and in which percentage the Ferrarese poet takes inspiration for his rhymes form the Florentine one.
