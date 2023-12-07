@@ -24,6 +24,7 @@ It was found that about 30.5% (tokens) of the rimanti of _Orlando Furioso_ are a
 
 ## Research limits
 - The code works on a basis of perfect match between strings, which means that the reprisal of the type balestre silvestre finestre – balestra silvestra finestra is not considered as such by the computer system.
+- Since the code isolates rhyming words by recognizing in the text a space-word sequence composed of multiple letters followed by a line break, "broken" rhymes are not considered by the system.
 - The data collected in the JSON dictionary by itself is not conclusive evidence of reprisal, each instance of coincidence between the two works has to be further analyzed in its textual context
 
 ## Script
