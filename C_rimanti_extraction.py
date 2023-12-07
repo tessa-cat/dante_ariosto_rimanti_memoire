@@ -125,7 +125,7 @@ def main():
 
         # Opening the canto in read mode
         with open (filepath, 'r') as testing:
-            canto = testing.read()
+            canto = testing.read()  
         
         # Accounting for different writing
         characters = canto.replace('à', 'a').replace('â', 'a').replace('è', 'e').replace('é', 'e').replace('ê', 'e').replace('ï', 'i').replace('í', 'i').replace('ì', 'i').replace('î', 'i').replace('ò', 'o').replace('ó', 'o').replace('ô', 'o').replace('ü', 'u').replace('ù', 'u').replace('ú', 'u')

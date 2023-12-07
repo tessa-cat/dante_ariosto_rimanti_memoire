@@ -1,85 +1,52 @@
 import re
+import os
 
 def main():
 
     # Script B: the cleaned-up files are split by canto
 
     # Dante's Divina Commedia
-    ## 1. Inferno
-    # Open file
-    with open ("cleaned_up_files/canticaInferno.txt.txt", "r") as If:
-        Inferno = If.read()
+    # Directory where the .txt files are contained
+    folder = 'cleaned_up_files'
 
-    # Split main file into each canto
-    canti = re.split('canto\s[ivx]+\n', Inferno)
+    # Cycling through each Commedia file
+    for filename in os.listdir(folder):
+        filepath = os.path.join(folder, filename)
+        with open (filepath, "r") as text:
+            text_to_split = text.read()
+                
+        # The canti of the Commedia are split by finding their start (canto+roman number+new line)
+        if filename != 'orlando_furioso.txt':
+            canti = re.split('canto\s[ivx]+\n', text_to_split)
+            cantica = filename[:-4]
 
-    # Creating a file for each individual canto
-    for item in canti:
-        index = str((canti.index(item)))
-        if index == '1' or index == '2' or index == '3' or index == '4' or index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
-            filepath = 'Inferno/0'+index+'_If.txt'
-        else:
-            filepath = 'Inferno/'+index+'_If.txt'
-        if len(item) != 0:
-            with open (filepath, 'w') as a:
-                a.write(item)
+            # The canti are indexed for the purpose of clarity
+            for item in canti:
+                index = str((canti.index(item)))
+                if index == '1' or index == '2' or index == '3' or index == '4' or index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
+                    filepath = cantica+'/0'+index+'_'+filename
+                else:
+                    filepath = cantica+'/'+index+'_'+filename
+                if len(item) != 0:
+                    with open (filepath, 'w') as a:
+                        a.write(item)
 
-    ## 2. Purgatorio
-    # Open file
-    with open ("cleaned_up_files/canticaPurgatorio.txt.txt", "r") as Pg:
-        Purgatorio = Pg.read()
+        # Orlando Furioso
+        if filename == 'orlando_furioso.txt':
+            canti = re.split('CANTO\s.*\n', text_to_split)
 
-    # Split main file into each canto
-    canti = re.split('canto\s[ivx]+\n', Purgatorio)
+            # Creating a file for each individual canto
+            for item in canti:
+                index = str((canti.index(item)))
+                if index == '1' or index == '2' or index == '3' or index == '4' or index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
+                    filepath = 'OF/0'+index+'_Of.txt'
+                else:
+                    filepath = 'OF/'+index+'_Of.txt'
+                if len(item) != 0:
+                    with open (filepath, 'w') as a:
+                        a.write(item)
 
-    # Creating a file for each individual canto
-    for item in canti:
-        index = str((canti.index(item)))
-        if index == '1' or index == '2' or index == '3' or index == '4' or index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
-            filepath = 'Purgatorio/0'+index+'_Pg.txt'
-        else:
-            filepath = 'Purgatorio/'+index+'_Pg.txt'
-        if len(item) != 0:
-            with open (filepath, 'w') as a:
-                a.write(item)
-    
-    ## 3. Paradiso
-    # Open file
-    with open ("cleaned_up_files/canticaParadiso.txt.txt", "r") as Pd:
-        Paradiso = Pd.read()
 
-    # Split main file into each canto
-    canti = re.split('canto\s[ivx]+\n', Paradiso)
-
-    # Creating a file for each individual canto
-    for item in canti:
-        index = str((canti.index(item)))
-        if index == '1' or index == '2' or index == '3' or index == '4' or index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
-            filepath = 'Paradiso/0'+index+'_Pd.txt'
-        else:
-            filepath = 'Paradiso/'+index+'_Pd.txt'
-        if len(item) != 0:
-            with open (filepath, 'w') as a:
-                a.write(item)
-
-    ## 4. Orlando Furioso
-    with open ("cleaned_up_files/orlando_furioso.txt", "r") as OF:
-        Orlando_furioso = OF.read()
-
-    # Split main file into each canto
-    canti = re.split('[A-Z]{2,}\s[A-Z]{2,}\n', Orlando_furioso)
-
-    # Creating a file for each individual canto
-    ## The last canto presents a different string to its beginning, so it was manually cut
-    for item in canti:
-        index = str((canti.index(item)))
-        if index == '1' or index == '2' or index == '3' or index == '4' or index == '5' or index == '6' or index == '7' or index == '8' or index == '9':
-            filepath = 'OF/0'+index+'_Of.txt'
-        else:
-            filepath = 'OF/'+index+'_Of.txt'
-        if len(item) != 0:
-            with open (filepath, 'w') as a:
-                a.write(item)
 
 if __name__ == "__main__":
     main()
