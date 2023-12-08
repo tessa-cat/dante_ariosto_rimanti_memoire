@@ -216,8 +216,6 @@ def main():
 
     with open ('json_files/dictionaries_json/group_A.json', 'w') as dic:
         json.dump(sorted_dict_1, dic)
-    with open ('json_files/dictionaries_json/group_A.txt', 'w') as dic:
-        json.dump(sorted_dict_1, dic)
 
     # Category B
     rimanti_dic_B = {}
@@ -261,8 +259,6 @@ def main():
     
     with open ('json_files/dictionaries_json/group_B.json', 'w') as dic:
         json.dump(B_dic, dic)
-    with open ('json_files/dictionaries_json/group_B.txt', 'w') as dic:
-        json.dump(B_dic, dic)
 
     # Category C: Partial riprese of groups of three in Ariosto
     rimanti_dic_C = {}
@@ -305,8 +301,6 @@ def main():
     C_dic = {i: rimanti_dic_C[i] for i in myKeys}
     
     with open ('json_files/dictionaries_json/group_C.json', 'w') as dic:
-        json.dump(C_dic, dic)
-    with open ('json_files/dictionaries_json/group_C.txt', 'w') as dic:
         json.dump(C_dic, dic)
 
 
@@ -362,8 +356,6 @@ def main():
     D_group = {i: rimanti_dic_D[i] for i in myKeys}
 
     with open ('json_files/dictionaries_json/group_D.json', 'w') as dic:
-        json.dump(D_group, dic)
-    with open ('json_files/dictionaries_json/group_D.txt', 'w') as dic:
         json.dump(D_group, dic)
 
 
@@ -421,8 +413,6 @@ def main():
     D_group = {i: rimanti_dic_E[i] for i in myKeys}
 
     with open ('json_files/dictionaries_json/group_E.json', 'w') as dic:
-        json.dump(D_group, dic)
-    with open ('json_files/dictionaries_json/group_E.txt', 'w') as dic:
         json.dump(D_group, dic)
 
 
