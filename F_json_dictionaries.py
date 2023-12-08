@@ -173,6 +173,7 @@ def main():
 
 
     ##### Creating the dictionaries ####
+    # Each dictionary is created with the following logic: a group of rimanti that has found a match is fused to create the key of the dictionary. If, for example, ABC is a group with a match in Dante, then the key would be A_B_C. First are created all the entries from the lists made previously. Then the group of rimanti is found in the comprehensive list of rimanti of the two works (where information regarding the position of the group of rimanti can be extracted). This works particularly well for Orlando Furioso (where a logic of canto, ottava is applied) but less with the Commedia. This is due to the fact that the lists are sorted so finding the rimanti which starts the sequence is not possible. The indication of verse that is obtained here always identifies the exact potion of one of the three words, but it might not be the first that appears in the text. The information regarding the position of the group of rimanti within the text is then added to the dictionary, wich is then written in a Json file.
 
     # Category A
     rimanti_dic_A = {}
