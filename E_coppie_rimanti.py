@@ -3,12 +3,7 @@ import json
 import itertools
 
 def main():
-    # Script E: In this script the amount of riprese by Ariosto
-    # of Dante's work is calculated as follows: because the rimanti
-    # can be distinguished in groups of three or groups of two (see readme)
-    # the groups of three rimanti are split in three groups of two rimanti.
-    # The groups of two are all put together. If the group of two in Ariosto
-    # is also present in Dante than a point is assigned over the total.
+    # Script E: In this script the amount of riprese of Dante's work by Ariosto is calculated as follows: because the rimanti can be distinguished in groups of three or groups of two the groups of three rimanti are split in three couples of two rimanti. The groups of two are then added to the couples. If the group of two in Ariosto is also present in Dante than a point is assigned over the total.
 
     # Importing the json files and opening it as a python list
     # Inferno
@@ -47,8 +42,6 @@ def main():
             for combination in combinations:
                 if_coppie_rimanti.append(combination)
                 dante_rimanti.append(combination) 
-
-    #print('coppie if', len(if_coppie_rimanti))
    
     # PURGATORIO
     pg_opera_completa = []
@@ -67,8 +60,6 @@ def main():
                 pg_coppie_rimanti.append(combination)
                 dante_rimanti.append(combination)
 
-    #print('coppie pg', len(pg_coppie_rimanti))
-
     # PARADISO
     pd_opera_completa = []
     for canto in paradiso_rimanti_list :
@@ -86,8 +77,6 @@ def main():
                 pd_coppie_rimanti.append(combination)
                 dante_rimanti.append(combination)
 
-    #print('coppie pd', len(pd_coppie_rimanti))
-
     # ORLANDO FURIOSO
     of_opera_completa = []
     for canto in of_rimanti_list :
@@ -103,8 +92,6 @@ def main():
             for combination in combinations:
                 of_coppie_rimanti.append(combination)
 
-    #print(len(of_coppie_rimanti))
-
     of_len_tokens = len(of_coppie_rimanti)
 
     ## TOKENS
@@ -117,7 +104,6 @@ def main():
     print(double_rimanti)
 
     calcolo = (double_rimanti/33894)*100
-    #print(calcolo)
     # About 1%
 
     # Making sure that the list is composed of sublists
@@ -125,25 +111,21 @@ def main():
     for coppia in of_coppie_rimanti:
         new_coppia = list(coppia)
         new_of_list.append(new_coppia)
-    #print(new_of_list)
 
     #Trying to sort the sublists so that then I can compare them without using sets
     of_sorted = []
     for sub_list in new_of_list:
         of_sorted.append(sorted(sub_list))
-    #print(len(of_sorted))
 
     # Making sure that all sub lists are in fact a list
     new_dante_list = []
     for coppia in dante_rimanti:
         new_coppia = list(coppia)
         new_dante_list.append(new_coppia)
-    #print(new_dante_list)
 
     d_sorted = []
     for sub_list in new_dante_list:
         d_sorted.append(sorted(sub_list))
-    print('len d_sorted', len(d_sorted))
 
     #Inferno
     new_if_list = []
@@ -154,6 +136,7 @@ def main():
     if_sorted = []
     for sub_list in new_if_list:
         if_sorted.append(sorted(sub_list))
+
     #Purgatorio
     new_pg_list = []
     for coppia in pg_coppie_rimanti:
@@ -163,6 +146,7 @@ def main():
     pg_sorted = []
     for sub_list in new_pg_list:
         pg_sorted.append(sorted(sub_list))
+
     #Paradiso
     new_pd_list = []
     for coppia in pd_coppie_rimanti:
@@ -174,53 +158,42 @@ def main():
         pd_sorted.append(sorted(sub_list))
 
     # Caculating how many of the couples used by Ariosto coincide with Dante's
+    # Over the whole Commedia
     tokens = 0
     for of_sub_list in of_sorted:
         if of_sub_list in d_sorted:
-                #print(of_sub_list, d_sublist)
                 tokens += 1
-                #break
-    print('Couples used by Ariosto:', tokens)
 
+    # In Inferno
     if_tokens = 0
     for of_sub_list in of_sorted:
-        for if_sublist in if_sorted:
-            if of_sub_list == if_sublist:
-                if_tokens += 1
-                break
+        if of_sub_list in if_sorted:
+            if_tokens += 1
 
+    # In Purgatorio
     pg_tokens = 0
     for of_sub_list in of_sorted:
-        for pg_sublist in pg_sorted:
-            if of_sub_list == pg_sublist:
-                pg_tokens += 1
-                break                
+        if of_sub_list in pg_sorted:
+            pg_tokens += 1               
     
+    # In Paradiso
     pd_tokens = 0
     for of_sub_list in of_sorted:
-        for pd_sublist in pd_sorted:
-            if of_sub_list == pd_sublist:
-                pd_tokens += 1
-                break
-    
-    print('Tokens for each cantica: ', if_tokens, pg_tokens, pd_tokens)
+        if of_sub_list in pd_sorted:
+            pd_tokens += 1
     
     ## TYPES
     #Creating a set of tuples
     of_set = set(tuple(i) for i in of_sorted)
     set_length = len(of_set)
-    print('OF set (types):', set_length)
 
     d_set = set(tuple(i) for i in d_sorted)
-    print('d_set length: ', len(d_set))
 
+    # Caculating how many of the couples used by Ariosto coincide with Dante's
     types = 0
     for of_sub_list in of_set:
-        for d_sublist in d_set:
-            if of_sub_list == d_sublist:
-                #print(of_sub_list, d_sublist)
-                types += 1
-                break
+        if of_sub_list in d_set: 
+            types += 1
     print(types)
 
     
