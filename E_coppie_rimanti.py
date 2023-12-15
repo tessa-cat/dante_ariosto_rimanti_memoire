@@ -183,11 +183,17 @@ def main():
             pd_tokens += 1
     
     ## TYPES
-    #Creating a set of tuples
+    #Creating a set of tuples to reduce the couples of rimanti from tokens to types
     of_set = set(tuple(i) for i in of_sorted)
     set_length = len(of_set)
 
     d_set = set(tuple(i) for i in d_sorted)
+
+    if_set = set(tuple(i) for i in if_sorted)
+
+    pg_set = set(tuple(i) for i in pg_sorted)
+
+    pd_set = set(tuple(i) for i in pd_sorted)
 
     # Caculating how many of the couples used by Ariosto coincide with Dante's
     types = 0
@@ -196,7 +202,25 @@ def main():
             types += 1
     print(types)
 
-    
+    types_if = 0
+    for of_sub_list in of_set:
+        if of_sub_list in if_set: 
+            types_if += 1
+    print(types_if)
+
+    types_pg = 0
+    for of_sub_list in of_set:
+        if of_sub_list in pg_set: 
+            types_pg += 1
+    print(types_pg)
+
+    types_pd = 0
+    for of_sub_list in of_set:
+        if of_sub_list in pd_set: 
+            types_pd += 1
+    print(types_pd)
+
+    # Tokens
     percentage_tokens = (tokens/of_len_tokens)*100
     print('Percentage of citations by Ariosto - tokens: ', percentage_tokens)
     # Percentage of citations by Ariosto - tokens:  30.53637812002124
@@ -213,9 +237,22 @@ def main():
     print('Percentage of citations by Ariosto from Paradiso - tokens: ', pd_percentage_tokens) 
     # Percentage of citations by Ariosto from Paradiso - tokens:  15.315395055172006
 
+    # Types
     percentage_types = (types/set_length)*100
     print('Percentage of citations by Ariosto - types: ', percentage_types)
     # Percentage of citations by Ariosto - types:  14.42105860327906
+
+    if_percentage_types = (types_if/set_length)*100
+    print('Percentage of citations by Ariosto - types: ', if_percentage_types)
+    # Percentage of citations by Ariosto from Inferno - types:  7.244567992284563
+
+    pg_percentage_types = (types_pg/set_length)*100
+    print('Percentage of citations by Ariosto - types: ', pg_percentage_types)
+    # Percentage of citations by Ariosto from Purgatorio - types:  7.159471265671981
+
+    pd_percentage_types = (types_pd/set_length)*100
+    print('Percentage of citations by Ariosto - types: ', pd_percentage_types)
+    # Percentage of citations by Ariosto from Paradiso - types:  5.911385942020764
 
 
 if __name__ == "__main__":
