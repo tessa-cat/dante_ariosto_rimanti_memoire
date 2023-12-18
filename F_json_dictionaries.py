@@ -67,6 +67,7 @@ def main():
 
     # Switching the list from tokens to types
     set_group_three = set(tuple(i) for i in a_three_rimanti)
+    print(len(set_group_three))
 
     # Maaking the set of tuples in a list so as to facilitate the comparaison within lists
     unset = []

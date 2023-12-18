@@ -258,7 +258,7 @@ def main():
     folder = 'OF'
 
     #Comprehensive list of all the rimanti sublists by canto
-    Of_rimanti_list = []
+    of_rimanti_list = []
 
     for filename in sorted(os.listdir(folder)):
         filepath = os.path.join(folder, filename)
@@ -293,13 +293,13 @@ def main():
         for rimante in range (0, len(rimanti_list), 8):
             # First set of rhymes A (B) A (B) A
             rimanti_A = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
-            Of_rimanti_list.append(rimanti_A)
+            of_rimanti_list.append(rimanti_A)
             # Second set B (A) B (A) B
             rimanti_B = rimanti_list[rimante+1], rimanti_list[rimante+3], rimanti_list[rimante+5]
-            Of_rimanti_list.append(rimanti_B)
+            of_rimanti_list.append(rimanti_B)
             # Last set C C
             rimanti_C = rimanti_list[rimante+6], rimanti_list[rimante+7]
-            Of_rimanti_list.append(rimanti_C)
+            of_rimanti_list.append(rimanti_C)
     
     # Printing all rimanti in json files
     with open ('json_files/rimanti_json/inferno_rimanti.json', 'w') as inf:
@@ -312,7 +312,7 @@ def main():
         json.dump(paradiso_rimanti_list, para)
 
     with open ('json_files/rimanti_json/orlando_rimanti.json', 'w') as orl:
-        json.dump(Of_rimanti_list, orl)
+        json.dump(of_rimanti_list, orl)
 
 if __name__ == "__main__":
     main()
