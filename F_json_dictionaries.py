@@ -63,11 +63,9 @@ def main():
                 a_three_rimanti.append(sorted(sub_list))
 
     set_group_two = set(tuple(i) for i in a_two_rimanti)
-    print('set_group_two len', len(set_group_two))
 
     # Switching the list from tokens to types
     set_group_three = set(tuple(i) for i in a_three_rimanti)
-    print(len(set_group_three))
 
     # Maaking the set of tuples in a list so as to facilitate the comparaison within lists
     unset = []
@@ -81,7 +79,8 @@ def main():
             if sorted(of_sublist) == sorted(d_sublist):
                 three_rimanti_sorted.append(sorted(of_sublist))
                 break
-    # Length: 406
+    print(len(three_rimanti_sorted))
+    # Length: 409
 
     # Category B: a group of three Furioso rimanti corresponds to subgroups of different groups in the Divina Commedia
     # First a list of all the groups of three rimanti which were not in the previous category is created
@@ -117,7 +116,8 @@ def main():
         elif (a_combinations[1] in dante_flattened and a_combinations[2] in dante_flattened):
             captured.append(a_list)
             captured_dante.append([a_list, a_combinations[1], a_combinations[2]])            
-    # Length of captured: 930
+    print(len(captured))
+    # Length of captured: 943
 
     # Category C: two rimanti of a group of three Furioso rimanti correspond to two rimanti of a group of two or three Divina Commedia rimanti
     # A list of all the groups of three rimanti which were not in the previous categories is created
@@ -141,7 +141,8 @@ def main():
         elif a_combinations[2] in dante_flattened:
             three_partial.append(a_list)
             three_partial_dante.append([a_list, a_combinations[2]])
-    # Length of three_partial: 2317
+    print(len(three_partial))
+    # Length of three_partial: 2332
 
     ### Groups of two rimanti ####
     # Category D: a group of two Furioso rimanti corresponds to a group of two Divina Commedia rimanti
@@ -160,7 +161,6 @@ def main():
     for sub_two in set_group_two:
         if sub_two not in set_complete_two:
             two_a.append(sub_two)
-    print(len(two_a))
     # Length: 3366
 
     # The groups of two rimanti are compared to the couples of dantean's rimanti for matches
@@ -170,7 +170,8 @@ def main():
         if sub_two in dante_flattened:
             two_from_three.append(list(sub_two))
             two_from_three_tuple.append(sub_two)
-    # Length two_from_three: 815
+    print(len(two_from_three))
+    # Length two_from_three: 821
 
 
     ##### Creating the dictionaries ####

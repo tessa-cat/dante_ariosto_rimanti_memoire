@@ -113,145 +113,156 @@ def main():
         ['zafiro', 'zaffiro'],
     ]
 
-    ### INFERNO ###
-    # Directory
-    folder = 'Inferno'
+    # ### INFERNO ###
+    # # Directory
+    # folder = 'Inferno'
 
-    #Comprehensive list of all the rimanti sublists by canto
-    inferno_rimanti_list = []
+    # #Comprehensive list of all the rimanti sublists by canto
+    # inferno_rimanti_list = []
 
-    for filename in sorted(os.listdir(folder)):
-        filepath = os.path.join(folder, filename)
+    # for filename in sorted(os.listdir(folder)):
+    #     if filename.endswith('.txt'):
+    #         filepath = os.path.join(folder, filename)
 
-        # Opening the canto in read mode
-        with open (filepath, 'r') as testing:
-            canto = testing.read()  
-        
-        # Accounting for different writing
-        characters = canto.replace('à', 'a').replace('â', 'a').replace('è', 'e').replace('é', 'e').replace('ê', 'e').replace('ï', 'i').replace('í', 'i').replace('ì', 'i').replace('î', 'i').replace('ò', 'o').replace('ó', 'o').replace('ô', 'o').replace('ü', 'u').replace('ù', 'u').replace('ú', 'u')
+    #         # Opening the canto in read mode
+    #         with open (filepath, 'r') as testing:
+    #             canto = testing.read()
+            
+    #         # Accounting for different writing
+    #         characters = canto.replace('à', 'a').replace('â', 'a').replace('è', 'e').replace('é', 'e').replace('ê', 'e').replace('ï', 'i').replace('í', 'i').replace('ì', 'i').replace('î', 'i').replace('ò', 'o').replace('ó', 'o').replace('ô', 'o').replace('ü', 'u').replace('ù', 'u').replace('ú', 'u')
 
-        # Keeping only the rimante !this might not work for some rimanti!
-        rimanti = re.sub(r"(.*)(\s)(\w+)(\n)", r"\3\4", characters)
+    #         # Keeping only the rimante !this might not work for some rimanti!
+    #         rimanti = re.sub(r"(.*)(\s)(\w+)(\n)", r"\3\4", characters)
 
-        # Putting the rimanti in a list
-        rimanti_list = rimanti.split("\n")
-        # Making sure there are no empty entraces in the list
-        if "" in rimanti_list:
-            rimanti_list.remove("")
+    #         # Putting the rimanti in a list
+    #         rimanti_list = rimanti.split("\n")
+    #         # Making sure there are no empty entraces in the list
+    #         if "" in rimanti_list:
+    #             rimanti_list.remove("")
 
-        #Making sure that the same rimanti's have the same written spelling
-        for rimante in rimanti_list:
-            r_i = rimanti_list.index(rimante)
-            for list in words_replace:
-                if rimante in list:
-                    rimanti_list[r_i] = list[1]
+    #         #Making sure that the same rimanti's have the same written spelling
+    #         for rimante in rimanti_list:
+    #             r_i = rimanti_list.index(rimante)
+    #             for list in words_replace:
+    #                 if rimante in list:
+    #                     rimanti_list[r_i] = list[1]
 
-        inferno_rimanti_list = []
-        # First set of rhymes A (B) A
-        rimanti = rimanti_list[0], rimanti_list[2]
-        inferno_rimanti_list.append(rimanti)
+    #         if_rimanti_list = []
+    #         # First set of rhymes A (B) A
+    #         rimanti = rimanti_list[0], rimanti_list[2]
+    #         if_rimanti_list.append(rimanti)
 
-        # All of the rhymes in sets of three
-        for rimante in range (1, len(rimanti_list)-5, 3):
-            rimanti = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
-            inferno_rimanti_list.append(rimanti)
-        
-        # Last set of rhymes X (Y) X
-        rimanti = rimanti_list[-3], rimanti_list[-1]
-        inferno_rimanti_list.append(rimanti)
+    #         # All of the rhymes in sets of three
+    #         for rimante in range (1, len(rimanti_list)-5, 3):
+    #             rimanti = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
+    #             if_rimanti_list.append(rimanti)
+            
+    #         # Last set of rhymes X (Y) X
+    #         rimanti = rimanti_list[-3], rimanti_list[-1]
+    #         if_rimanti_list.append(rimanti)
 
-    ## PURGATORIO ###
-    #Directory
-    folder = 'Purgatorio'
+    #         inferno_rimanti_list.append(if_rimanti_list)
 
-    #Comprehensive list of all the rimanti sublists by canto
-    purgatorio_rimanti_list = []
+    # ## PURGATORIO ###
+    # #Directory
+    # folder = 'Purgatorio'
 
-    for filename in sorted(os.listdir(folder)):
-        filepath = os.path.join(folder, filename)
+    # #Comprehensive list of all the rimanti sublists by canto
+    # purgatorio_rimanti_list = []
 
-        # Opening the canti in read mode
-        with open (filepath, 'r') as testing:
-            canto = testing.read()
+    # for filename in sorted(os.listdir(folder)):
+    #     if filename.endswith('.txt'):
+    #         filepath = os.path.join(folder, filename)
 
-        # Accounting for different writing
-        characters = canto.replace('à', 'a').replace('â', 'a').replace('è', 'e').replace('é', 'e').replace('ê', 'e').replace('ï', 'i').replace('í', 'i').replace('ì', 'i').replace('î', 'i').replace('ò', 'o').replace('ó', 'o').replace('ô', 'o').replace('ü', 'u').replace('ù', 'u').replace('ú', 'u')
+    #         # Opening the canti in read mode
+    #         with open (filepath, 'r') as testing:
+    #             canto = testing.read()
 
-        # Keeping only the rimante !this might not work for some rimanti!
-        rimanti = re.sub(r"(.*)(\s)(\w+)(\n)", r"\3\4", characters)
+    #         # Accounting for different writing
+    #         characters = canto.replace('à', 'a').replace('â', 'a').replace('è', 'e').replace('é', 'e').replace('ê', 'e').replace('ï', 'i').replace('í', 'i').replace('ì', 'i').replace('î', 'i').replace('ò', 'o').replace('ó', 'o').replace('ô', 'o').replace('ü', 'u').replace('ù', 'u').replace('ú', 'u')
 
-        # Putting the rimanti in a list
-        rimanti_list = rimanti.split("\n")
-        # Making sure there are no empty entraces in the list
-        if "" in rimanti_list:
-            rimanti_list.remove("")
+    #         # Keeping only the rimante !this might not work for some rimanti!
+    #         rimanti = re.sub(r"(.*)(\s)(\w+)(\n)", r"\3\4", characters)
 
-        #Making sure that the same rimanti's have the same written spelling
-        for rimante in rimanti_list:
-            r_i = rimanti_list.index(rimante)
-            for list in words_replace:
-                if rimante in list:
-                    rimanti_list[r_i] = list[1]
+    #         # Putting the rimanti in a list
+    #         rimanti_list = rimanti.split("\n")
+    #         # Making sure there are no empty entraces in the list
+    #         if "" in rimanti_list:
+    #             rimanti_list.remove("")
 
-        # First set of rhymes A (B) A
-        rimanti = rimanti_list[0], rimanti_list[2]
-        purgatorio_rimanti_list.append(rimanti)  
+    #         #Making sure that the same rimanti's have the same written spelling
+    #         for rimante in rimanti_list:
+    #             r_i = rimanti_list.index(rimante)
+    #             for list in words_replace:
+    #                 if rimante in list:
+    #                     rimanti_list[r_i] = list[1]
 
-        # All of the rhymes in sets of three
-        for rimante in range (1, len(rimanti_list)-5, 3):
-            rimanti = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
-            purgatorio_rimanti_list.append(rimanti)  
-        
-        # Last set of rhymes X (Y) X
-        rimanti = rimanti_list[-3], rimanti_list[-1]
-        purgatorio_rimanti_list.append(rimanti)  
+    #         pg_rimanti_list = []
+    #         # First set of rhymes A (B) A
+    #         rimanti = rimanti_list[0], rimanti_list[2]
+    #         pg_rimanti_list.append(rimanti)  
+
+    #         # All of the rhymes in sets of three
+    #         for rimante in range (1, len(rimanti_list)-5, 3):
+    #             rimanti = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
+    #             pg_rimanti_list.append(rimanti)  
+            
+    #         # Last set of rhymes X (Y) X
+    #         rimanti = rimanti_list[-3], rimanti_list[-1]
+    #         pg_rimanti_list.append(rimanti) 
+
+    #         purgatorio_rimanti_list.append(pg_rimanti_list)
 
 
-    ### PARADISO ###
-    # Directory
-    folder = 'Paradiso'
+    # ### PARADISO ###
+    # # Directory
+    # folder = 'Paradiso'
 
-    #Comprehensive list of all the rimanti sublists by canto
-    paradiso_rimanti_list = []
+    # #Comprehensive list of all the rimanti sublists by canto
+    # paradiso_rimanti_list = []
 
-    for filename in sorted(os.listdir(folder)):
-        filepath = os.path.join(folder, filename)
+    # for filename in sorted(os.listdir(folder)):
+    #     if filename.endswith('.txt'):
+    #         filepath = os.path.join(folder, filename)
 
-        # Opening the canti in read mode
-        with open (filepath, 'r') as testing:
-            canto = testing.read()
+    #         # Opening the canti in read mode
+    #         with open (filepath, 'r') as testing:
+    #             canto = testing.read()
 
-        # Accounting for different writing
-        characters = canto.replace('à', 'a').replace('â', 'a').replace('è', 'e').replace('é', 'e').replace('ê', 'e').replace('ï', 'i').replace('í', 'i').replace('ì', 'i').replace('î', 'i').replace('ò', 'o').replace('ó', 'o').replace('ô', 'o').replace('ü', 'u').replace('ù', 'u').replace('ú', 'u')
+    #         # Accounting for different writing
+    #         characters = canto.replace('à', 'a').replace('â', 'a').replace('è', 'e').replace('é', 'e').replace('ê', 'e').replace('ï', 'i').replace('í', 'i').replace('ì', 'i').replace('î', 'i').replace('ò', 'o').replace('ó', 'o').replace('ô', 'o').replace('ü', 'u').replace('ù', 'u').replace('ú', 'u')
 
-        # Keeping only the rimante !this might not work for some rimanti!
-        rimanti = re.sub(r"(.*)(\s)(\w+)(\n)", r"\3\4", characters)
+    #         # Keeping only the rimante !this might not work for some rimanti!
+    #         rimanti = re.sub(r"(.*)(\s)(\w+)(\n)", r"\3\4", characters)
 
-        # Putting the rimanti in a list
-        rimanti_list = rimanti.split("\n")
-        # Making sure there are no empty entraces in the list
-        if "" in rimanti_list:
-            rimanti_list.remove("")
-        
-        #Making sure that the same rimanti's have the same written spelling
-        for rimante in rimanti_list:
-            r_i = rimanti_list.index(rimante)
-            for list in words_replace:
-                if rimante in list:
-                    rimanti_list[r_i] = list[1]
+    #         # Putting the rimanti in a list
+    #         rimanti_list = rimanti.split("\n")
+    #         # Making sure there are no empty entraces in the list
+    #         if "" in rimanti_list:
+    #             rimanti_list.remove("")
+            
+    #         #Making sure that the same rimanti's have the same written spelling
+    #         for rimante in rimanti_list:
+    #             r_i = rimanti_list.index(rimante)
+    #             for list in words_replace:
+    #                 if rimante in list:
+    #                     rimanti_list[r_i] = list[1]
 
-        # First set of rhymes A (B) A
-        rimanti = rimanti_list[0], rimanti_list[2]
-        paradiso_rimanti_list.append(rimanti)  
+    #         pd_rimanti_list = []
+    #         # First set of rhymes A (B) A
+    #         rimanti = rimanti_list[0], rimanti_list[2]
+    #         pd_rimanti_list.append(rimanti)  
 
-        # All of the rhymes in sets of three
-        for rimante in range (1, len(rimanti_list)-5, 3):
-            rimanti = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
-            paradiso_rimanti_list.append(rimanti)  
-        
-        # Last set of rhymes X (Y) X
-        rimanti = rimanti_list[-3], rimanti_list[-1]
-        paradiso_rimanti_list.append(rimanti)  
+    #         # All of the rhymes in sets of three
+    #         for rimante in range (1, len(rimanti_list)-5, 3):
+    #             rimanti = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
+    #             pd_rimanti_list.append(rimanti)  
+            
+    #         # Last set of rhymes X (Y) X
+    #         rimanti = rimanti_list[-3], rimanti_list[-1]
+    #         pd_rimanti_list.append(rimanti)
+
+    #         paradiso_rimanti_list.append(pd_rimanti_list)
 
     # ### ORLANDO FURIOSO ###
     # Directory
@@ -261,55 +272,58 @@ def main():
     of_rimanti_list = []
 
     for filename in sorted(os.listdir(folder)):
-        filepath = os.path.join(folder, filename)
+        if filename.endswith('.txt'):
+            filepath = os.path.join(folder, filename)
 
-        # Opening the canti in read mode
-        with open (filepath, 'r') as testing:
-            canto = testing.read()
+            # Opening the canti in read mode
+            with open (filepath, 'r') as testing:
+                canto = testing.read()
 
-        # Lowercase now because before the uppercase was used to split up the canti
-        lowercase = canto.lower()
+            # Lowercase now because before the uppercase was used to split up the canti
+            lowercase = canto.lower()
 
-        # Accounting for different writing --> the problem with this is that the autors not only write some words differently, but within the works themselves a word can be spelled differently. How do I account for the magin of error? 
-        characters = lowercase.replace('à', 'a').replace('â', 'a').replace('è', 'e').replace('é', 'e').replace('ê', 'e').replace('ï', 'i').replace('í', 'i').replace('ì', 'i').replace('î', 'i').replace('ò', 'o').replace('ó', 'o').replace('ô', 'o').replace('ü', 'u').replace('ù', 'u').replace('ú', 'u')
+            # Accounting for different writing --> the problem with this is that the autors not only write some words differently, but within the works themselves a word can be spelled differently. How do I account for the magin of error? 
+            characters = lowercase.replace('à', 'a').replace('â', 'a').replace('è', 'e').replace('é', 'e').replace('ê', 'e').replace('ï', 'i').replace('í', 'i').replace('ì', 'i').replace('î', 'i').replace('ò', 'o').replace('ó', 'o').replace('ô', 'o').replace('ü', 'u').replace('ù', 'u').replace('ú', 'u')
 
-        # Keeping only the rimante !this might not work for some rimanti!
-        rimanti = re.sub(r"(.*)(\s)(\w+)(\n)", r"\3\4", characters)
+            # Keeping only the rimante !this might not work for some rimanti!
+            rimanti = re.sub(r"(.*)(\s)(\w+)(\n)", r"\3\4", characters)
 
-        # Putting the rimanti in a list
-        rimanti_list = rimanti.split("\n")
-        # Making sure there are no empty entraces in the list
-        if "" in rimanti_list:
-            rimanti_list.remove("")
-        
-        #Making sure that the same rimanti's have the same written spelling
-        for rimante in rimanti_list:
-            r_i = rimanti_list.index(rimante)
-            for list in words_replace:
-                if rimante in list:
-                    rimanti_list[r_i] = list[1]
+            # Putting the rimanti in a list
+            rimanti_list = rimanti.split("\n")
+            # Making sure there are no empty entraces in the list
+            if "" in rimanti_list:
+                rimanti_list.remove("")
+            
+            #Making sure that the same rimanti's have the same written spelling
+            for rimante in rimanti_list:
+                r_i = rimanti_list.index(rimante)
+                for list in words_replace:
+                    if rimante in list:
+                        rimanti_list[r_i] = list[1]
 
-        # Cycling through the list of rimanti to aggregate the ones that rhyme
-        for rimante in range (0, len(rimanti_list), 8):
-            # First set of rhymes A (B) A (B) A
-            rimanti_A = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
-            of_rimanti_list.append(rimanti_A)
-            # Second set B (A) B (A) B
-            rimanti_B = rimanti_list[rimante+1], rimanti_list[rimante+3], rimanti_list[rimante+5]
-            of_rimanti_list.append(rimanti_B)
-            # Last set C C
-            rimanti_C = rimanti_list[rimante+6], rimanti_list[rimante+7]
-            of_rimanti_list.append(rimanti_C)
+            list = []
+            # Cycling through the list of rimanti to aggregate the ones that rhyme
+            for rimante in range (0, len(rimanti_list), 8):
+                # First set of rhymes A (B) A (B) A
+                rimanti_A = rimanti_list[rimante], rimanti_list[rimante+2], rimanti_list[rimante+4]
+                list.append(rimanti_A)
+                # Second set B (A) B (A) B
+                rimanti_B = rimanti_list[rimante+1], rimanti_list[rimante+3], rimanti_list[rimante+5]
+                list.append(rimanti_B)
+                # Last set C C
+                rimanti_C = rimanti_list[rimante+6], rimanti_list[rimante+7]
+                list.append(rimanti_C)
+            of_rimanti_list.append(list)
     
-    # Printing all rimanti in json files
-    with open ('json_files/rimanti_json/inferno_rimanti.json', 'w') as inf:
-        json.dump(inferno_rimanti_list, inf)
+    # # Printing all rimanti in json files
+    # with open ('json_files/rimanti_json/inferno_rimanti.json', 'w') as inf:
+    #     json.dump(inferno_rimanti_list, inf)
 
-    with open ('json_files/rimanti_json/purgatorio_rimanti.json', 'w') as purg:
-        json.dump(purgatorio_rimanti_list, purg)
+    # with open ('json_files/rimanti_json/purgatorio_rimanti.json', 'w') as purg:
+    #     json.dump(purgatorio_rimanti_list, purg)
 
-    with open ('json_files/rimanti_json/paradiso_rimanti.json', 'w') as para:
-        json.dump(paradiso_rimanti_list, para)
+    # with open ('json_files/rimanti_json/paradiso_rimanti.json', 'w') as para:
+    #     json.dump(paradiso_rimanti_list, para)
 
     with open ('json_files/rimanti_json/orlando_rimanti.json', 'w') as orl:
         json.dump(of_rimanti_list, orl)

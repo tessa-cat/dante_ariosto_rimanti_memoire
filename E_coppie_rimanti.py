@@ -93,6 +93,7 @@ def main():
                 of_coppie_rimanti.append(combination)
 
     of_len_tokens = len(of_coppie_rimanti)
+    
 
     ## TOKENS
     # How many couples of rimanti are composed by the same word?
@@ -101,7 +102,6 @@ def main():
     for coppia in of_coppie_rimanti:
         if coppia[0] == coppia[1]:
             double_rimanti += 1
-    print(double_rimanti)
 
     calcolo = (double_rimanti/33894)*100
     # About 1%
@@ -163,6 +163,7 @@ def main():
     for of_sub_list in of_sorted:
         if of_sub_list in d_sorted:
                 tokens += 1
+    print(tokens)
 
     # In Inferno
     if_tokens = 0
@@ -222,37 +223,37 @@ def main():
 
     # Tokens
     percentage_tokens = (tokens/of_len_tokens)*100
-    print('Percentage of citations by Ariosto - tokens: ', percentage_tokens)
-    # Percentage of citations by Ariosto - tokens:  30.53637812002124
+    print('Percentage of matches between OF and CM- tokens: ', percentage_tokens)
+    # Percentage of citations by Ariosto - tokens:  30.74%
 
     if_percentage_tokens = (if_tokens/of_len_tokens)*100
-    print('Percentage of citations by Ariosto from Inferno - tokens: ', if_percentage_tokens)
-    # Percentage of citations by Ariosto from Inferno - tokens:  18.903050687437304
+    print('Percentage of matches between OF and Inferno - tokens: ', if_percentage_tokens)
+    # Percentage of citations by Ariosto from Inferno - tokens:  19.05%
 
     pg_percentage_tokens = (pg_tokens/of_len_tokens)*100
-    print('Percentage of citations by Ariosto from Purgatorio - tokens: ', pg_percentage_tokens)
-    # Percentage of citations by Ariosto from Purgatorio - tokens:  18.43984185991621
+    print('Percentage of matches between OF and Purgatorio - tokens: ', pg_percentage_tokens)
+    # Percentage of citations by Ariosto from Purgatorio - tokens:  18.61%
 
     pd_percentage_tokens = (pd_tokens/of_len_tokens)*100
-    print('Percentage of citations by Ariosto from Paradiso - tokens: ', pd_percentage_tokens) 
-    # Percentage of citations by Ariosto from Paradiso - tokens:  15.315395055172006
+    print('Percentage of matches between OF and Paradiso - tokens: ', pd_percentage_tokens) 
+    # Percentage of citations by Ariosto from Paradiso - tokens:  15.44
 
     # Types
     percentage_types = (types/set_length)*100
-    print('Percentage of citations by Ariosto - types: ', percentage_types)
-    # Percentage of citations by Ariosto - types:  14.42105860327906
+    print('Percentage of matches between OF and Cm - types: ', percentage_types)
+    # Percentage of citations by Ariosto - types:  14.56
 
     if_percentage_types = (types_if/set_length)*100
-    print('Percentage of citations by Ariosto - types: ', if_percentage_types)
-    # Percentage of citations by Ariosto from Inferno - types:  7.244567992284563
+    print('Percentage of matches between OF and If - types: ', if_percentage_types)
+    # Percentage of citations by Ariosto from Inferno - types:  7.33
 
     pg_percentage_types = (types_pg/set_length)*100
-    print('Percentage of citations by Ariosto - types: ', pg_percentage_types)
-    # Percentage of citations by Ariosto from Purgatorio - types:  7.159471265671981
+    print('Percentage of matches between OF and Pg - types: ', pg_percentage_types)
+    # Percentage of citations by Ariosto from Purgatorio - types:  7.24
 
     pd_percentage_types = (types_pd/set_length)*100
-    print('Percentage of citations by Ariosto - types: ', pd_percentage_types)
-    # Percentage of citations by Ariosto from Paradiso - types:  5.911385942020764
+    print('Percentage of matches between OF and Pd - types: ', pd_percentage_types)
+    # Percentage of citations by Ariosto from Paradiso - types:  5.97
 
 
 if __name__ == "__main__":
